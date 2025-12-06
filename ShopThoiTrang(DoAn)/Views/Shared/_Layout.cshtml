@@ -1,0 +1,883 @@
+﻿@if (TempData["SuccessMessage"] != null)
+{
+<script>
+        window.onload = function() {
+            alert("@Html.Raw(TempData["SuccessMessage"])");
+        }
+</script>
+}
+
+@if (TempData["Error"] != null)
+{
+<script>
+        window.onload = function() {
+            alert("@Html.Raw(TempData["Error"])");
+        }
+</script>
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        TRANG PHỤC NAM BỀN, MỀM, KHÔNG LỖI MỐT
+        – YaMe.vn
+    </title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --primary-color: #2c2c2c;
+            --accent-color: #d4a574;
+            --light-bg: #f8f8f8;
+            --text-dark: #333;
+            --text-muted: #666;
+            --border-color: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-item {
+            display: flex;
+            position: relative;
+            padding: 14px 20px;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .has-dropdown {
+            position: relative;
+        }
+
+        .nav-item:hover {
+            color: #000;
+        }
+
+        .icon-att::after {
+            content: '▾';
+            font-size: 20px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .mega-menu {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 9998;
+        }
+
+        .has-dropdown:hover .mega-menu {
+            display: block;
+        }
+
+        .mega-menu:hover {
+            display: block;
+        }
+
+        .mega-menu-content {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 40px;
+        }
+
+        .mega-menu-left {
+            width: 250px;
+            border-right: 1px solid #e5e5e5;
+            padding-right: 30px;
+        }
+
+        .mega-menu-category {
+            padding: 12px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #555;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+            .mega-menu-category:hover {
+                background: #f8f8f8;
+                color: #000;
+            }
+
+            .mega-menu-category.active {
+                background: #f0f0f0;
+                color: #000;
+                font-weight: 500;
+            }
+
+            .mega-menu-category::after {
+                content: '›';
+                font-size: 18px;
+            }
+
+        .mega-menu-right {
+            flex: 1;
+            padding-left: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .mega-menu-section {
+            display: none;
+        }
+
+            .mega-menu-section.active {
+                display: contents;
+            }
+
+        .mega-menu-column h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .mega-menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mega-menu-item {
+            font-size: 13px;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+            .mega-menu-item:hover {
+                color: #000;
+            }
+
+        .badge-sale {
+            display: inline-block;
+            color: black;
+            font-size: 15px;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .sale-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 350px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            padding: 8px 0;
+            display: none;
+            z-index: 9998;
+            margin-top: 8px;
+        }
+
+        .simple-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu:hover {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+            .dropdown-item:hover {
+                background: #f5f5f5;
+                color: #000;
+            }
+
+        hr {
+            width: 300px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #444 100%);
+            color: white;
+            padding: 50px 20px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h5 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+            .footer-section a:hover {
+                color: var(--accent-color);
+                padding-left: 5px;
+            }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            flex-shrink: 0;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+
+        .main-footer {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .info-main-footer {
+            display: flex;
+            gap: 10px;
+            margin-right: 130px;
+            align-items: center;
+        }
+
+        .pic-main-footer {
+            padding-bottom: 20px;
+        }
+
+        .search-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 20px;
+        }
+
+        .search-modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+            .search-modal-content input {
+                flex: 1;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .search-modal-content button {
+                padding: 10px 15px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+        .close-search {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-icon-wrapper {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .icon {
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -6px;
+            right: -10px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="logo">
+                <a href="/">
+                    <img src="~/Content/picture/logo_YaMe_2025.png" style="width: 150px; " />
+                </a>
+            </div>
+
+            <nav class="nav">
+                <div class="nav-item has-dropdown simple-dropdown">
+                    <div class="icon-att" style="display: flex; align-items: center; gap: 5px;">
+                        <img src="@Url.Content("~/Content/picture/battery-one-quarter-filled-svgrepo-com.svg")"
+                             alt="Battery 25%" width="20" height="20" />
+                        <span class="badge-sale">SALE</span>
+                    </div>
+
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Sale Áo Thun, Áo Khoác, Sơ Mi</a>
+                        <a href="#" class="dropdown-item">Sale Quần Dài, Quần Short, Quần Jeans</a>
+                        <a href="#" class="dropdown-item">Sale Balo, Túi, Giày</a>
+                        <a href="#" class="dropdown-item">Sale Dép, Ví, Nón, Dây Nịt, Vớ, Găng Tay, Quần Lót</a>
+                        <a href="#" class="dropdown-item">Manga Super Sale</a>
+                        <a href="#" class="dropdown-item">Sale Phụ Kiện Thể Thao, Đồ Dùng Tiện Ích</a>
+                    </div>
+                </div>
+
+                <div class="nav-item has-dropdown">
+                    <div class="icon-att">GU</div>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="mega-menu-left">
+                                <div class="mega-menu-category active" data-category="simple" data-menu="gu">
+                                    <a href="@Url.Action("GuDonGian", "Home")" style="text-decoration:none; color: black;">👕 GU ĐƠN GIẢN</a>
+                                </div>
+                                <div class="mega-menu-category" data-category="design" data-menu="gu">
+                                    <a href="@Url.Action("GuThietKe", "Home")" style="text-decoration:none; color: black;">✨ GU THIẾT KẾ</a>
+                                </div>
+                                <div class="mega-menu-category" data-category="sport" data-menu="gu">
+                                    <a href="@Url.Action("GuTheThao", "Home")" style="text-decoration:none; color: black;">⚽ GU THỂ THAO</a>
+                                </div>
+                            </div>
+                            <div class="mega-menu-right">
+                                <div class="mega-menu-section active" data-section="simple">
+                                    <div class="mega-menu-column">
+                                        <h3>Tram Thiết Yếu</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">Non Branded (Bền, đơn giản)</div>
+                                            <div class="mega-menu-item">Seventy Seven (Không lỗi mốt)</div>
+                                            <div class="mega-menu-item">The Worker (Nhiều túi)</div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>Tram Jean</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">The Original Jean (Giá tốt)</div>
+                                            <div class="mega-menu-item">Tek Black Jean (Đen bền)</div>
+                                            <div class="mega-menu-item">Multi-Color Jean (Nhiều màu)</div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>Tram Công Nghệ</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">The Minimalist (Tối giản)</div>
+                                            <div class="mega-menu-item">The CEO (Sang trọng)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mega-menu-section" data-section="design">
+                                    <div class="mega-menu-column">
+                                        <h3>Họa Tiết</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">Áo Kẻ Sọc</div>
+                                            <div class="mega-menu-item">Áo Họa Tiết</div>
+                                            <div class="mega-menu-item">Áo In Chữ</div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>Phong Cách</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">Oversize</div>
+                                            <div class="mega-menu-item">Regular Fit</div>
+                                            <div class="mega-menu-item">Slim Fit</div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>Chất Liệu</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">Cotton 100%</div>
+                                            <div class="mega-menu-item">Poly Cotton</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mega-menu-section" data-section="sport">
+                                    <div class="mega-menu-column">
+                                        <h3>Tập Luyện</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">Áo Gym</div>
+                                            <div class="mega-menu-item">Quần Jogger</div>
+                                            <div class="mega-menu-item">Áo Ba Lỗ</div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>Chạy Bộ</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">Áo Running</div>
+                                            <div class="mega-menu-item">Quần Short Thể Thao</div>
+                                        </div>
+                                    </div>
+                                    <div class="mega-menu-column">
+                                        <h3>Dã Ngoại</h3>
+                                        <hr>
+                                        <div class="mega-menu-items">
+                                            <div class="mega-menu-item">Áo Khoác Gió</div>
+                                            <div class="mega-menu-item">Quần Dài Thể Thao</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @Html.Action("_MenuHeader", "Home")
+                <div class="icon-att">Mới</div>
+                <div class="icon-att">Cửa Hàng</div>
+                <div class="icon-att">Vip</div>
+            </nav>
+
+            <div class="icons">
+                <div class="icon">🔍</div>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @if (Session["User"] == null)
+                        {
+                        <span>👤 Tài khoản</span>
+                        }
+                        else
+                        {
+                            var user = Session["User"];
+
+                            if (user is ShopThoiTrang_DoAn_.KhachHang kh)
+                            {
+                        <span>👤 @kh.TenKH</span>
+                            }
+                            else if (user is ShopThoiTrang_DoAn_.NhanVien nv)
+                            {
+                        <span>👤 @nv.TenNV</span>
+                            }
+                        }
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        @if (Session["User"] == null)
+                        {
+                        <a class="dropdown-item" href="@Url.Action("Login", "User")">Đăng nhập</a>
+                        <a class="dropdown-item" href="@Url.Action("Register", "User")">Đăng ký</a>
+                        }
+                        else
+                        {
+                            if (Session["Role"] != null && (Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "NhanVien"))
+                            {
+                        <a class="dropdown-item" href="@Url.Action("RegisterNhanVien", "User")">Tạo nhân viên mới</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "ManageOrder")">Quản lý đơn hàng</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "ManageProduct")">Quản lý sản phẩm</a>
+                        <a class="dropdown-item" href="@Url.Action("Index", "ThongKe")">Thống kê doanh thu</a>
+                            }
+
+                            if(Session["Role"] != null && (Session["Role"].ToString() == "KhachHang"))
+                            {
+                        <a class="dropdown-item" href="@Url.Action("LichSuDonHang", "User")">Đơn hàng</a>
+                            }
+
+                        <a class="dropdown-item" href="@Url.Action("Logout", "User")">Đăng xuất</a>
+                        }
+                    </div>
+                </div>
+
+                @{
+                    var cart = Session["Cart"] as ShopThoiTrang_DoAn_.Models.Cart;
+                    int count = cart != null ? cart.SoLuongMatHang() : 0;
+
+                    bool loggedIn = Session["User"] != null;
+
+                    string link = loggedIn
+                        ? Url.Action("Index", "Cart")
+                        : Url.Action("Login", "User");
+                }
+
+                <a href="@link" class="cart-icon-wrapper">
+                    <div class="icon">🛒</div>
+                    <span class="cart-count">@count</span>
+                </a>
+
+            </div>
+        </div>
+
+        @using (Html.BeginForm("TimKiemTheoTuKhoa", "Home", FormMethod.Get))
+        {
+        <div id="searchModal" class="search-modal">
+            <div class="search-modal-content">
+                <span class="close-search">&times;</span>
+                <input name="keyword" type="text" placeholder="Tìm kiếm..." value="@ViewBag.Keyword" />
+                <button>🔍</button>
+            </div>
+        </div>
+        }
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="main-footer">
+            <div class="info-main-footer">
+                <div class="pic-main-footer">
+                    <img src="@Url.Content("~/Content/picture/box-minimalistic-svgrepo-com.svg")" alt=""
+                         style="width: 30px; filter: invert(1) brightness(3);">
+                </div>
+                <div class="word-main-footer">
+                    <h5>MIỄN PHÍ SHIP</h5>
+                    <p>Toàn quốc</p>
+                </div>
+            </div>
+            <div class="info-main-footer">
+                <div class="pic-main-footer">
+                    <img src="@Url.Content("~/Content/picture/like-tag-svgrepo-com.svg")" alt=""
+                         style="width: 30px; filter: invert(1) brightness(3);">
+                </div>
+                <div class="word-main-footer">
+                    <h5>BẢO HÀNH</h5>
+                    <p>365 Ngày</p>
+                </div>
+            </div>
+            <div class="info-main-footer">
+                <div class="pic-main-footer">
+                    <img src="@Url.Content("~/Content/picture/company-small-24px-svgrepo-com.svg")" alt=""
+                         style="width: 30px; filter: invert(1) brightness(3);">
+                </div>
+                <div class="word-main-footer">
+                    <h5>ĐỊA CHỈ</h5>
+                    <p>Cửa hàng YaMe VN</p>
+                </div>
+            </div>
+            <div class="info-main-footer">
+                <div class="pic-main-footer">
+                    <img src="@Url.Content("~/Content/picture/book-open-svgrepo-com.svg")" alt=""
+                         style="width: 30px; filter: invert(1) brightness(3);">
+                </div>
+                <div class="word-main-footer">
+                    <h5>TẠP CHÍ</h5>
+                    <p>Thông tin thời trang</p>
+                </div>
+            </div>
+        </div>
+        <hr style="width: 100%;">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h5>Quần Áo</h5>
+                <ul>
+                    <li><a href="#">Áo Thun</a></li>
+                    <li><a href="#">Áo Khoác</a></li>
+                    <li><a href="#">Áo Sơ Mi</a></li>
+                    <li><a href="#">Quần Dài</a></li>
+                    <li><a href="#">Quần Short</a></li>
+                    <li><a href="#">Quần Jeans</a></li>
+                    <li><a href="#">Quần Lót</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Phụ Kiện</h5>
+                <ul>
+                    <li><a href="#">Balo</a></li>
+                    <li><a href="#">Túi đeo</a></li>
+                    <li><a href="#">Nón</a></li>
+                    <li><a href="#">Ví</a></li>
+                    <li><a href="#">Dây Nịt</a></li>
+                    <li><a href="#">Vớ</a></li>
+                    <li><a href="#">Giày</a></li>
+                    <li><a href="#">Dép</a></li>
+                    <li><a href="#">Phụ Kiện Cá Nhân</a></li>
+                    <li><a href="#">Phụ Kiện Thể Thao</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>GU Của YaMe</h5>
+                <ul>
+                    <p>GU ĐƠN GIẢN</p>
+                    <li><a href="#">Trạm Thiết Yếu</a></li>
+                    <li><a href="#">Trạm Công Nghệ</a></li>
+                    <li><a href="#">Trạm Jeans</a></li>
+                    <p>GU THIẾT KẾ</p>
+                    <li><a href="#">Trạm Tận Hưởng</a></li>
+                    <li><a href="#">Trạm Dịch Chuyển</a></li>
+                    <li><a href="#">Trạm Collab</a></li>
+                    <p>GU THỂ THAO</p>
+                    <li><a href="#">The Beginner</a></li>
+                    <li><a href="#">The Trainer</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Về YaMe</h5>
+                <ul>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Cửa Hàng</a></li>
+                    <li><a href="#">Bảo Hành</a></li>
+                    <li><a href="#">Đổi Trả</a></li>
+                    <li><a href="#">Đăng Nhập VIP</a></li>
+                    <li><a href="#">Chính Sách VIP</a></li>
+                    <li><a href="#">Blogs Gu Đơn Giản</a></li>
+                    <li><a href="#">Blogs Gu Thiết Kế</a></li>
+                    <li><a href="#">Blogs Gu Thế Thao</a></li>
+                    <li><a href="#">Blogs Hướng Dẫn</a></li>
+                    <li><a href="#">SiteMap</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                © 2025 - HỘ KINH DOANH Y2010 - YAME VN Mã số HKD: 0306194105-007 - Đăng ký lần đầu: 06/03/2024 - Co quan
+                cấp: UBND Quận 10 - Phòng Tài chính - Kế hoạch Địa chỉ đăng ký kinh doanh: 766/3B Sư Vạn Hạnh (Nối dài),
+            </p>
+            <p>
+                Phường 12, Quận 10, TP.HCM - Điện thoại: (028) 3868 4857 - Mua hàng: (028) 7307 1441 - Email:
+                cskh@yame.vn
+            </p>
+        </div>
+    </footer>
+    <script>
+        const megaMenuItems = document.querySelectorAll('.has-dropdown:not(.simple-dropdown)');
+
+        megaMenuItems.forEach(navItem => {
+            const megaMenu = navItem.querySelector('.mega-menu');
+            let timeoutId;
+
+            navItem.addEventListener('mouseenter', function () {
+                clearTimeout(timeoutId);
+                if (megaMenu) {
+                    megaMenu.style.display = 'block';
+                }
+            });
+
+            navItem.addEventListener('mouseleave', function () {
+                timeoutId = setTimeout(() => {
+                    if (megaMenu && !megaMenu.matches(':hover')) {
+                        megaMenu.style.display = 'none';
+                    }
+                }, 100);
+            });
+
+            if (megaMenu) {
+                megaMenu.addEventListener('mouseenter', function () {
+                    clearTimeout(timeoutId);
+                    this.style.display = 'block';
+                });
+
+                megaMenu.addEventListener('mouseleave', function () {
+                    this.style.display = 'none';
+                });
+            }
+        });
+
+        const simpleDropdowns = document.querySelectorAll('.simple-dropdown');
+
+        simpleDropdowns.forEach(dropdown => {
+            const menu = dropdown.querySelector('.dropdown-menu');
+            let timeoutId;
+
+            dropdown.addEventListener('mouseenter', function () {
+                clearTimeout(timeoutId);
+                if (menu) {
+                    menu.style.display = 'block';
+                }
+            });
+
+            dropdown.addEventListener('mouseleave', function () {
+                timeoutId = setTimeout(() => {
+                    if (menu && !menu.matches(':hover')) {
+                        menu.style.display = 'none';
+                    }
+                }, 100);
+            });
+
+            if (menu) {
+                menu.addEventListener('mouseenter', function () {
+                    clearTimeout(timeoutId);
+                    this.style.display = 'block';
+                });
+
+                menu.addEventListener('mouseleave', function () {
+                    this.style.display = 'none';
+                });
+            }
+        });
+
+        document.querySelectorAll('.mega-menu-category').forEach(category => {
+            category.addEventListener('mouseenter', function () {
+                const menu = this.getAttribute('data-menu') || 'gu';
+                const sectionName = this.getAttribute('data-category');
+                const parentMenu = this.closest('.mega-menu');
+
+                parentMenu.querySelectorAll('.mega-menu-category').forEach(cat => {
+                    cat.classList.remove('active');
+                });
+
+                this.classList.add('active');
+
+                parentMenu.querySelectorAll('.mega-menu-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                const targetSection = parentMenu.querySelector(`.mega-menu-section[data-section="${sectionName}"]`);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            });
+        });
+        const searchIcon = document.querySelector('.icons .icon:first-child');
+        const searchModal = document.getElementById('searchModal');
+        const closeSearch = document.querySelector('.close-search');
+
+        searchIcon.addEventListener('click', () => {
+            searchModal.style.display = 'flex';
+        });
+
+        closeSearch.addEventListener('click', () => {
+            searchModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === searchModal) {
+                searchModal.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

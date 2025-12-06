@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ShopThoiTrang_DoAn_.HoaDon>
+@{
+    ViewBag.Title = "Lịch sử mua hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">LỊCH SỬ ĐƠN HÀNG CỦA BẠN</h2>
+
+    @if (!Model.Any())
+    {
+    <div class="alert alert-info text-center">
+        Bạn chưa có đơn hàng nào. <a href="@Url.Action("Index", "Home")">Mua sắm ngay!</a>
+    </div>
+    }
+    else
+    {
+    <table class="table table-bordered table-hover mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>Mã ĐH</th>
+                <th>Ngày đặt</th>
+                <th>Người nhận</th>
+                <th>Địa chỉ</th>
+                <th>Tổng tiền</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                {
+            <tr>
+                <td>#@item.MaHD</td>
+                <td>@string.Format("{0:dd/MM/yyyy HH:mm}", item.NgayLap)</td>
+
+                <td>
+                    Xem chi tiết
+                </td>
+                <td>@item.DiaChiGiaoHang</td>
+
+                <td class="text-danger font-weight-bold">
+                    @string.Format("{0:N0} đ", item.TongTien)
+                </td>
+
+                <td>
+                    @if(item.TinhTrang == 1) { <span class="badge badge-warning" style="color: black;">Đang chờ xử lý</span> }
+                            else if(item.TinhTrang == 2) { <span class="badge badge-primary" style="color: black;">Đã thanh toán</span> }
+                            else if(item.TinhTrang == 3) { <span class="badge badge-success" style="color: black;">Đã giao hàng</span> }
+                            else if(item.TinhTrang == 4) { <span class="badge badge-delete" style="color: black;">Đã hủy</span> }
+                            else { <span class="badge badge-secondary">Khác</span> }
+                </td>
+
+                <td>
+                    <a href="@Url.Action("XemChiTietDonHang", "User", new { id = item.MaHD })" class="btn btn-sm btn-info">
+                        Xem SP
+                    </a>
+                </td>
+            </tr>
+                }
+        </tbody>
+    </table>
+    }
+</div>

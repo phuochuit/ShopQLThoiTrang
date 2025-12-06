@@ -1,0 +1,19 @@
+﻿@model List<ShopThoiTrang_DoAn_.SanPham>
+
+<div class="row justify-content-center g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-6 col-md-3">
+            <div class="card border-0 product-card">
+                <div class="overflow-hidden">
+                    <img src="@Url.Content("~/Content/images/" + item.AnhDaiDien)" class="card-img-top" alt="@item.TenSP">
+                </div>
+                <div class="card-body">
+                    <span class="badge bg-light text-dark mb-2">Miễn Phí Ship</span>
+                    <p class="card-text product-name text-secondary mb-1" style="font-size:14px;">@item.TenSP</p>
+                    <p class="fw-semibold mb-0">@item.Gia.Value.ToString("N0") VND</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ShopThoiTrang_DoAn_.Controllers.TopSanPhamViewModel>
+
+<table class="table table-striped mb-0">
+    <thead>
+        <tr>
+            <th>Sản phẩm</th>
+            <th class="text-right">Đã bán</th>
+            <th class="text-right">Doanh thu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                <div class="d-flex align-items-center">
+                    <img src="~/Content/images/@item.HinhAnh" width="40" height="40" class="mr-2 rounded" style="object-fit:cover" />
+                    <span style="font-size: 13px; font-weight: 500;">
+                        @(item.TenSP.Length > 20 ? item.TenSP.Substring(0, 20) + "..." : item.TenSP)
+                    </span>
+                </div>
+            </td>
+            <td class="text-right font-weight-bold">@item.TongSoLuongBan</td>
+            <td class="text-right text-success small font-weight-bold">
+                @string.Format("{0:N0}", item.TongTienThu)
+            </td>
+        </tr>
+            }
+        }
+        else
+        {
+        <tr>
+            <td colspan="3" class="text-center text-muted">Chưa có dữ liệu bán hàng.</td>
+        </tr>
+        }
+    </tbody>
+</table>

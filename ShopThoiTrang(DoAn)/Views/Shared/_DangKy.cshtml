@@ -1,0 +1,172 @@
+﻿<div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 py-5">
+    <div style="width: 100%; max-width: 550px;">
+        <!-- Selection Buttons -->
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <button class="btn btn-primary" id="btnKhachHang" onclick="switchForm('khachhang')">
+                Đăng Ký Khách Hàng
+            </button>
+            <button class="btn btn-outline-primary" id="btnNhanVien" onclick="switchForm('nhanvien')">
+                Đăng Ký Nhân Viên
+            </button>
+        </div>
+        
+        <!-- FORM NHÂN VIÊN -->
+        <div id="formNhanVien" class="form-section d-none">
+            <div class="card">
+                <div class="card-body p-5">
+                    <h4 class="card-title text-center mb-1">Đăng Ký Tài Khoản Nhân Viên</h4>
+                    <p class="text-center text-muted mb-4">Vui lòng nhập đầy đủ thông tin</p>
+
+                    <div id="errorNV" class="alert alert-danger d-none" role="alert"></div>
+                    <div id="successNV" class="alert alert-success d-none" role="alert"></div>
+
+                    <form id="registerFormNV" onsubmit="handleRegisterNV(event)">
+                        <div class="mb-3">
+                            <label for="tenNV" class="form-label">Tên Nhân Viên <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="tenNV" placeholder="Nhập tên nhân viên" required>
+                            <small class="text-muted">Tối thiểu 3 ký tự</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="emailNV" class="form-label">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="emailNV" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="matKhauNV" class="form-label">Mật Khẩu <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="matKhauNV" placeholder="Nhập mật khẩu" required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordNV()">Ẩn</button>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirmPasswordNV" class="form-label">Xác Nhận Mật Khẩu <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="confirmPasswordNV" placeholder="Xác nhận mật khẩu" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="gioiTinhNV" class="form-label">Giới Tính <span class="text-danger">*</span></label>
+                            <select class="form-select" id="gioiTinhNV" required>
+                                <option value="">-- Chọn giới tính --</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="namSinhNV" class="form-label">Năm Sinh <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="namSinhNV" placeholder="1990" min="1950" max="2010" required>
+                            <small class="text-muted">Từ 1950 đến 2010</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
+                    </form>
+
+                    <div class="mt-3 text-center">
+                        <span class="text-muted">Đã có tài khoản? </span>
+                        <a href="@Url.Action("DangNhap", "Home")" class="text-decoration-none fw-bold">Đăng nhập ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM KHÁCH HÀNG -->
+        <div id="formKhachHang" class="form-section">
+            <div class="card">
+                <div class="card-body p-5">
+                    <h4 class="card-title text-center mb-1">Đăng Ký Tài Khoản Khách Hàng</h4>
+                    <p class="text-center text-muted mb-4">Tạo tài khoản để mua sắm dễ dàng hơn</p>
+
+                    <div id="errorKH" class="alert alert-danger d-none" role="alert"></div>
+                    <div id="successKH" class="alert alert-success d-none" role="alert"></div>
+
+                    <form id="registerFormKH" onsubmit="handleRegisterKH(event)">
+                        <div class="mb-3">
+                            <label for="tenKH" class="form-label">Tên Khách Hàng <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="tenKH" placeholder="Nhập tên đầy đủ" required>
+                            <small class="text-muted">Tối thiểu 3 ký tự</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="emailKH" class="form-label">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="emailKH" placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="dienThoai" class="form-label">Số Điện Thoại <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" id="dienThoai" placeholder="0912345678" required>
+                            <small class="text-muted">Nhập 10-11 chữ số</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="matKhauKH" class="form-label">Mật Khẩu <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="matKhauKH" placeholder="Nhập mật khẩu" required>
+                                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordKH()">Ẩn</button>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirmPasswordKH" class="form-label">Xác Nhận Mật Khẩu <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="confirmPasswordKH" placeholder="Xác nhận mật khẩu" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="gioiTinhKH" class="form-label">Giới Tính <span class="text-danger">*</span></label>
+                            <select class="form-select" id="gioiTinhKH" required>
+                                <option value="">-- Chọn --</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="namSinhKH" class="form-label">Năm Sinh <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="namSinhKH" placeholder="1990" min="1950" max="2010" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="diaChi" class="form-label">Địa Chỉ <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="diaChi" placeholder="Nhập địa chỉ đầy đủ" required>
+                            <small class="text-muted">Ví dụ: 123 Đường Nguyễn Huệ, Quận 1, TP. HCM</small>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                Tôi đồng ý với <a href="#" class="text-decoration-none">điều khoản dịch vụ</a> và <a href="#" class="text-decoration-none">chính sách bảo mật</a>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
+                    </form>
+
+                    <div class="mt-3 text-center">
+                        <span class="text-muted">Đã có tài khoản? </span>
+                        <a href="@Url.Action("DangNhap", "Home")" class="text-decoration-none fw-bold">Đăng nhập ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function switchForm(type) {
+        document.getElementById('formNhanVien').classList.toggle('d-none', type !== 'nhanvien');
+        document.getElementById('formKhachHang').classList.toggle('d-none', type !== 'khachhang');
+    }
+
+    function togglePasswordNV() {
+        const el = document.getElementById('matKhauNV');
+        el.type = el.type === 'password' ? 'text' : 'password';
+    }
+
+    function togglePasswordKH() {
+        const el = document.getElementById('matKhauKH');
+        el.type = el.type === 'password' ? 'text' : 'password';
+    }
+</script>

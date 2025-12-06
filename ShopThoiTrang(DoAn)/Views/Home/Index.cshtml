@@ -1,0 +1,494 @@
+﻿@model List<ShopThoiTrang_DoAn_.SanPham>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaMe.vn</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            height: 4000px;
+        }
+
+        .banner-list {
+            padding-bottom: 50px;
+        }
+
+        .btn:first-child:hover {
+            color: white;
+            background-color: rgb(217, 131, 2);
+            border: none;
+        }
+
+        .btn:hover {
+            color: white;
+            background-color: rgb(217, 131, 2);
+        }
+
+        .banner-item {
+            border-radius: 2px;
+        }
+
+        .btn-thumb {
+            font-size: 20px;
+            height: 55px;
+            border: none;
+            color: white;
+            background-color: black;
+        }
+
+            .btn-thumb:hover {
+                opacity: 60%;
+            }
+
+
+        .product-card img {
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .product-name {
+            transition: text-decoration 0.3s ease;
+        }
+
+        .product-card:hover .product-name {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+            #overlay.show-overlay {
+                opacity: 1;
+            }
+
+        #productCard {
+            background-color: #fff;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        #overlay.show-overlay #productCard {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            animation: scrollText 15s linear infinite;
+        }
+
+        @@keyframes scrollText {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .faq-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .faq-header {
+            margin-bottom: 40px;
+        }
+
+            .faq-header h2 {
+                font-size: 32px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            .faq-header p {
+                color: #666;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+        .faq-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background-color: #fff;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+            user-select: none;
+        }
+
+            .faq-question:hover {
+                color: #333;
+            }
+
+        .faq-icon {
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+            .faq-icon.active {
+                transform: rotate(180deg);
+            }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+            .faq-answer.active {
+                max-height: 500px;
+                padding-top: 15px;
+                padding-bottom: 10px;
+            }
+
+            .faq-answer p {
+                margin-bottom: 10px;
+            }
+
+                .faq-answer p:last-child {
+                    margin-bottom: 0;
+                }
+
+        .faq-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .faq-header {
+            margin-bottom: 40px;
+        }
+
+            .faq-header h2 {
+                font-size: 32px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            .faq-header p {
+                color: #666;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+        .faq-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            background-color: #fff;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+            user-select: none;
+        }
+
+            .faq-question:hover {
+                color: #333;
+            }
+
+        .faq-icon {
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+            .faq-icon.active {
+                transform: rotate(180deg);
+            }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #666;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+            .faq-answer.active {
+                max-height: 500px;
+                padding-top: 15px;
+                padding-bottom: 10px;
+            }
+
+            .faq-answer p {
+                margin-bottom: 10px;
+            }
+
+                .faq-answer p:last-child {
+                    margin-bottom: 0;
+                }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="position-relative text-center">
+            <img src="~/Content/picture/banner_homepage_0211_pc.png" class="img-fluid w-100" alt="Banner" />
+
+            <div class="banner-list position-absolute bottom-0 start-50 translate-middle-x mb-4">
+                <a href="@Url.Action("GuDonGian", "Home")">
+                    <button class="banner-item btn btn-outline-light custom-btn mx-2 px-4 py-2">
+                        GU ĐƠN GIẢN
+                    </button>
+                </a>
+                <a href="@Url.Action("GuThietKe", "Home")">
+                    <button class="banner-item btn btn-outline-light custom-btn mx-2 px-4 py-2">
+                        GU THIẾT KẾ
+                    </button>
+                </a>
+                <a href="@Url.Action("GuTheThao", "Home")">
+                    <button class="banner-item btn btn-outline-light custom-btn mx-2 px-4 py-2">
+                        GU THỂ THAO
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <div class="container text-center my-5">
+            <h4 class="fw-bold">Trạm Phong Cách</h4>
+            <p class="text-muted">Hãy chia sẻ phong cách thời trang của bạn với YaMe</p>
+
+            <div class="row justify-content-center g-3" id="gallery">
+                <div class="col-6 col-md-3">
+                    <video width="250" height="340" autoplay muted loop style="object-fit: cover;">
+                        <source src="@Url.Content("~/Content/picture/1.mp4")" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="col-6 col-md-3">
+                    <video width="250" height="340" autoplay muted loop style="object-fit: cover;">
+                        <source src="@Url.Content("~/Content/picture/2.mp4")" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="col-6 col-md-3">
+                    <video width="250" height="340" autoplay muted loop style="object-fit: cover;">
+                        <source src="@Url.Content("~/Content/picture/3.mp4")" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="col-6 col-md-3">
+                    <video width="250" height="340" autoplay muted loop style="object-fit: cover;">
+                        <source src="@Url.Content("~/Content/picture/4.mp4")" type="video/mp4" />
+                    </video>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="bg-dark text-white d-flex align-items-center overflow-hidden" style="height:40px;">
+            <div class="marquee d-inline-flex">
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+                <span class="mx-4">MIỄN PHÍ SHIP</span>
+            </div>
+        </div>
+
+        <div class="product-1">
+            <div class="container my-5">
+                <div class="text-start mb-4">
+                    <h3 class="fw-semibold">Trạm 1 | Thời Trang Thiết Yếu</h3>
+                    <p class="text-muted fst-italic mb-0">"Nền Tảng Phong Cách, Chất Lượng Vượt Thời Gian"</p>
+                </div>
+
+                <div class="row justify-content-center g-4">
+                    @foreach (var item in Model.Where(x => new int[] { 1, 2, 3, 4 }.Contains(x.MaSP)))
+                    {
+                        <div class="col-6 col-md-3">
+                            <a href="@Url.Action("Details", "Home", new { id = item.MaSP })" style="text-decoration:none;">
+                                <div class="card border-0 product-card">
+                                    <div class="overflow-hidden">
+                                        <img src="@Url.Content("~/Content/images/" + item.AnhDaiDien)" class="card-img-top" alt="@item.TenSP">
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="badge bg-light text-dark mb-2">Miễn Phí Ship</span>
+                                        <p class="card-text product-name text-secondary mb-1" style="font-size:14px;">@item.TenSP</p>
+                                        <p class="fw-semibold mb-0">@item.Gia.Value.ToString("N0") VND</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+
+                <div class="text-center">
+                    <a href="@Url.Action("TransProduct1", "Home")">
+                        <button class="btn-thumb btn-dark mt-4 px-4 py-2">Load more</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-1">
+            <div class="container my-5">
+                <div class="text-start mb-4">
+                    <h3 class="fw-semibold">Trạm 2 | Thời Trang Công Nghệ</h3>
+                    <p class="text-muted fst-italic mb-0">"Mặc Công Nghệ, Sống Thảnh Thơi"</p>
+                </div>
+
+                <div class="row justify-content-center g-4">
+                    @foreach (var item in Model.Where(x => new int[] { 80, 82, 50, 90 }.Contains(x.MaSP)))
+                    {
+                        <div class="col-6 col-md-3">
+                            <a href="@Url.Action("Details", "Home", new { id = item.MaSP })" style="text-decoration:none;">
+                                <div class="card border-0 product-card">
+                                    <div class="overflow-hidden">
+                                        <img src="@Url.Content("~/Content/images/" + item.AnhDaiDien)" class="card-img-top" alt="@item.TenSP">
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="badge bg-light text-dark mb-2">Miễn Phí Ship</span>
+                                        <p class="card-text product-name text-secondary mb-1" style="font-size:14px;">@item.TenSP</p>
+                                        <p class="fw-semibold mb-0">@item.Gia.Value.ToString("N0") VND</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+
+                <div class="text-center">
+                    <a href="@Url.Action("TransProduct2", "Home")">
+                        <button class="btn-thumb btn-dark mt-4 px-4 py-2">Load more</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="faq-header">
+                <h2>Câu Hỏi Thường Gặp (FAQ)</h2>
+                <p>YaMe hiện tại đang phát triển theo triết lý thời trang Vì Nhân Sinh là Mặc Bền, Mặc Mềm, Mặc Không Lỗi Mốt. Nhờ thiết kế tinh tế, tôn dáng Người Việt và đi đầu về công nghệ, giúp người mặc tỏa ra Khí Chất Nam Tính.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(0)">
+                        <span>Quyền lợi của thành viên VIP 15% là gì? Tôi thấy không có gì đặc biệt.</span>
+                        <span class="faq-icon" id="icon-0">^</span>
+                    </div>
+                    <div class="faq-answer" id="answer-0">
+                        <p>Chào bạn. Đặc quyền VIP 15% là mức ưu đãi cao nhất và bền vững nhất YaMe dành cho bạn. Quyền lợi này được áp dụng cho toàn bộ sản phẩm nguyên giá khi bạn mua sắm tại cửa hàng.</p>
+                        <p>Đây là một đặc quyền rất giá trị, đặc biệt khi bạn mua các sản phẩm mới ra mắt (chưa tham gia khuyến mãi).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <span>Thẻ VIP có được cộng dồn giảm giá với các chương trình sale (như 11/11) không?</span>
+                        <span class="faq-icon" id="icon-1">^</span>
+                    </div>
+                    <div class="faq-answer" id="answer-1">
+                        <p>Thông thường, thẻ VIP chỉ áp dụng cho hàng nguyên giá. Tuy nhiên, tin vui là YaMe đang áp dụng đặc quyền mới: bắt đầu từ 11/11,</p>
+                        <p>VIP sẽ được CỘNG DỒN giảm giá thẻ VIP của mình chung với các chương trình khuyến mãi.</p>
+                        <p>Đây là món quà tri ân đặc biệt YaMe muốn dành cho các khách hàng thân thiết nhất.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <span>Tôi rất thích một mẫu áo cũ nhưng giờ không thấy bán nữa. Mẫu mà YaMe đạo này cũng ít quá.</span>
+                        <span class="faq-icon" id="icon-2">^</span>
+                    </div>
+                    <div class="faq-answer" id="answer-2">
+                        <p>YaMe hiểu cảm nhận của bạn và rất tiếc vì mẫu cũ bạn ưng đã không còn. YaMe đang trong giai đoạn chuyển mình quan trọng, tập</p>
+                        <p>trung vào chiến lược "Giá trị > Giá bán".</p>
+                        <p>Thay vì ra mắt ồ ạt nhiều mẫu (như "thời trang nhanh"), YaMe đang dồn toàn lực để phát triển các sản phẩm chiến lược, đảm bảo</p>
+                        <p>từng sản phẩm ra mắt đều đạt chuẩn "Bền – Mềm – Không Lỗi Mốt".</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <span>YaMe có vẻ ít size S, tôi khó mua đồ.</span>
+                        <span class="faq-icon" id="icon-3">^</span>
+                    </div>
+                    <div class="faq-answer" id="answer-3">
+                        <p>YaMe thành thật xin lỗi bạn về trải nghiệm này. Tin vui là YaMe đang giải quyết vấn đề này trong các BST mới. Đặc biệt tại "Trạm</p>
+                        <p>Công Nghệ", YaMe đang áp dụng hệ thống 15 size (Premium size) để đảm bảo vừa vặn nhất cho mọi vóc dáng, chắc chắn sẽ có size S bạn cần.</p>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const extras = document.querySelectorAll('.extra');
+
+                let currentOpenFAQ = null;
+
+                function toggleFAQ(index) {
+                    const answer = document.getElementById(`answer-${index}`);
+                    const icon = document.getElementById(`icon-${index}`);
+
+                    if (currentOpenFAQ === index) {
+                        answer.classList.remove('active');
+                        icon.classList.remove('active');
+                        currentOpenFAQ = null;
+                        return;
+                    }
+
+                    if (currentOpenFAQ !== null) {
+                        const prevAnswer = document.getElementById(`answer-${currentOpenFAQ}`);
+                        const prevIcon = document.getElementById(`icon-${currentOpenFAQ}`);
+                        prevAnswer.classList.remove('active');
+                        prevIcon.classList.remove('active');
+                    }
+
+                    answer.classList.add('active');
+                    icon.classList.add('active');
+                    currentOpenFAQ = index;
+                }
+            </script>
+</body>
+</html>

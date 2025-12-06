@@ -1,0 +1,179 @@
+﻿@model List<ShopThoiTrang_DoAn_.SanPham>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaMe.vn - Trạm Thiết Yếu</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .product-card img {
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .product-name {
+            transition: text-decoration 0.3s ease;
+        }
+
+        .product-card:hover .product-name {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .breadcrumb-item:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            opacity: 60%;
+        }
+
+        .page-link {
+            font-size: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: #333;
+            background-color: transparent;
+            border-radius: 5px;
+            padding: 6px 12px;
+            margin: 0 3px;
+            border: 1px solid transparent;
+        }
+
+            .page-link:hover {
+                color: #000;
+                background-color: #f0f0f0;
+                text-decoration: none;
+                border-color: #ddd;
+                transform: scale(1.05);
+            }
+
+        .page-item.active .page-link {
+            font-weight: 600;
+            color: #fff;
+            background-color: #000;
+            border-radius: 5px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+            .page-item.active .page-link::after {
+                content: '';
+                display: block;
+                width: 25px;
+                height: 3px;
+                background-color: #ffd700;
+                position: absolute;
+                bottom: -5px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 2px;
+            }
+
+        .page-item.disabled .page-link {
+            color: #bbb;
+            cursor: not-allowed;
+        }
+
+        .page-item:not(.disabled) .page-link:hover {
+            background-color: #f5f5f5;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <nav aria-label="breadcrumb" class="bg-white py-2">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="/" class="text-decoration-none text-dark">Trang chủ</a>
+                </li>
+                <li class="breadcrumb-item active text-secondary" aria-current="page">
+                    Gu Thể Thao
+                </li>
+            </ol>
+        </div>
+    </nav>
+
+    <div style="padding-top: 20px; margin-left: 140px; font-size: 20px;">
+        <span>Gu Thể Thao</span>
+    </div>
+
+    <div class="container my-5">
+        <div id="product-container" class="row g-4 justify-content-center">
+            @foreach (var item in Model.Where(x => new int[] { 18, 19 }.Contains((int)x.MaDM)))
+            {
+                <div class="col-6 col-md-3 product-card-wrapper">
+                    <a href="@Url.Action("Details", "Home", new { id = item.MaSP })" style="text-decoration:none;">
+                        <div class="card border-0 product-card">
+                            <div class="overflow-hidden">
+                                <img src="@Url.Content("~/Content/images/" + item.AnhDaiDien)" class="card-img-top" alt="@item.TenSP">
+                            </div>
+                            <div class="card-body">
+                                <span class="badge bg-light text-dark mb-2">Miễn Phí Ship</span>
+                                <p class="card-text product-name text-secondary mb-1" style="font-size:14px;">@item.TenSP</p>
+                                <p class="fw-semibold mb-0">@item.Gia.Value.ToString("N0") VND</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+
+        <nav aria-label="Product pagination">
+            <ul id="pagination" class="pagination justify-content-center mt-4"></ul>
+        </nav>
+    </div>
+
+    <script>
+        const products = Array.from(document.querySelectorAll('.product-card-wrapper'));
+        const pageSize = 8;
+        let currentPage = 1;
+        const totalPages = Math.ceil(products.length / pageSize);
+
+        function showPage(page) {
+            currentPage = page;
+            const start = (page - 1) * pageSize;
+            const end = start + pageSize;
+
+            products.forEach((p, i) => {
+                p.style.display = (i >= start && i < end) ? 'block' : 'none';
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const container = document.getElementById('pagination');
+            container.innerHTML = '';
+
+            const prev = document.createElement('li');
+            prev.className = 'page-item ' + (currentPage === 1 ? 'disabled' : '');
+            prev.innerHTML = `<a class="page-link border-0" href="#">&#60;</a>`;
+            prev.onclick = () => { if (currentPage > 1) showPage(currentPage - 1); };
+            container.appendChild(prev);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li');
+                li.className = 'page-item ' + (i === currentPage ? 'active' : '');
+                li.innerHTML = `<a class="page-link border-0">${i}</a>`;
+                li.onclick = () => showPage(i);
+                container.appendChild(li);
+            }
+
+            const next = document.createElement('li');
+            next.className = 'page-item ' + (currentPage === totalPages ? 'disabled' : '');
+            next.innerHTML = `<a class="page-link border-0" href="#">&#62;</a>`;
+            next.onclick = () => { if (currentPage < totalPages) showPage(currentPage + 1); };
+            container.appendChild(next);
+        }
+
+        showPage(1);
+    </script>
+</body>
+</html>

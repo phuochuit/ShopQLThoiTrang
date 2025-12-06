@@ -1,0 +1,64 @@
+﻿@model ShopThoiTrang_DoAn_.NhanVien
+@{
+    ViewBag.Title = "Đăng ký nhân viên";
+}
+
+<div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 py-5">
+    <div style="width: 100%; max-width: 550px;">
+        <div class="form-section">
+            <div class="card shadow-sm">
+                <div class="card-body p-5">
+                    <h4 class="card-title text-center mb-1">Đăng Ký Tài Khoản Nhân Viên</h4>
+                    <p class="text-center text-muted mb-4">Vui lòng nhập đầy đủ thông tin</p>
+
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                    }
+
+                    @using (Html.BeginForm("RegisterNhanVien", "User", FormMethod.Post))
+                    {
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.TenNV, "Tên Nhân Viên", htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.TenNV, new { @class = "form-control", placeholder = "Nhập tên nhân viên" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.Email, "Email", htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "your@email.com" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.MatKhau, "Mật Khẩu", new { @class = "form-label" })
+                            @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                            @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.GioiTinh, "Giới Tính", htmlAttributes: new { @class = "form-label" })
+                            @Html.DropDownListFor(m => m.GioiTinh,
+                                new SelectList(new[] { "Nam", "Nữ", "Khác" }),
+                                "-- Chọn giới tính --",
+                                new { @class = "form-select" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.NamSinh, "Năm Sinh", htmlAttributes: new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.NamSinh, new { @class = "form-control", type = "number", min = "1950", max = "2010", placeholder = "1990" })
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePasswordNV() {
+        const input = document.querySelector('input[type="password"]');
+        input.type = input.type === 'password' ? 'text' : 'password';
+    }
+</script>

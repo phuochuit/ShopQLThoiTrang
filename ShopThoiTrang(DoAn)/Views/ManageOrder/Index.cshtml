@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ShopThoiTrang_DoAn_.HoaDon>
+
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center text-primary">DANH SÁCH ĐƠN HÀNG</h2>
+
+@if (TempData["Success"] != null)
+{
+<div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Mã ĐH</th>
+            <th>Khách hàng</th>
+            <th>Ngày đặt</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.MaHD</td>
+            <td>
+                @if (item.KhachHang != null)
+                    {
+                <span>@item.KhachHang.TenKH</span>  <br />
+                <small>@item.SDT</small>
+                    }
+                    else
+                    {
+                <span>Khách vãng lai</span>
+                    }
+            </td>
+            <td>@string.Format("{0:dd/MM/yyyy HH:mm}", item.NgayLap)</td>
+            <td class="text-danger font-weight-bold">
+                @string.Format("{0:N0} đ", item.TongTien)
+            </td>
+            <td>
+                @if (item.TinhTrang == 1) { <span class="badge badge-warning text-dark">Đang chờ xử lý</span> }
+                    else if (item.TinhTrang == 2) { <span class="badge badge-info text-dark">Đã thanh toán</span> }
+                    else if (item.TinhTrang == 3) { <span class="badge badge-success text-dark">Đã giao hàng</span> }
+                    else { <span class="badge badge-danger text-dark">Đã hủy</span> }
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "ManageOrder", new { id = item.MaHD })" class="btn btn-sm btn-primary">
+                    Xem chi tiết
+                </a>
+
+                <button type="button" class="btn btn-success btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalUpdate_@item.MaHD">
+                    Cập nhật
+                </button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@foreach (var item in Model)
+{
+<div class="modal fade" id="modalUpdate_@item.MaHD" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cập nhật đơn hàng #@item.MaHD</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            @using (Html.BeginForm("CapNhatTrangThai", "ManageOrder", FormMethod.Post))
+                {
+            <div class="modal-body">
+                <input type="hidden" name="id" value="@item.MaHD" />
+                <label>Chọn trạng thái:</label>
+                <select name="trangThai" class="form-control">
+                    <option value="1" @(item.TinhTrang == 1 ? "selected" : "")>Đang chờ xử lý</option>
+                    <option value="2" @(item.TinhTrang == 2 ? "selected" : "")>Đã thanh toán</option>
+                    <option value="3" @(item.TinhTrang == 3 ? "selected" : "")>Đã giao hàng</option>
+                    <option value="4" @(item.TinhTrang == 4 ? "selected" : "")>Đã hủy</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+            </div>
+                }
+        </div>
+    </div>
+</div>
+}

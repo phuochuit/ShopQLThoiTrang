@@ -1,0 +1,428 @@
+﻿@model ShopThoiTrang_DoAn_.Models.Cart
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .cart-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .cart-header {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .cart-table thead th {
+                padding: 16px 12px;
+                text-align: left;
+                font-size: 14px;
+                font-weight: 600;
+                color: #666;
+                text-transform: uppercase;
+                border-bottom: 2px solid #e8e8e8;
+            }
+
+            .cart-table tbody tr {
+                border-bottom: 1px solid #e8e8e8;
+            }
+
+                .cart-table tbody tr:last-child {
+                    border-bottom: none;
+                }
+
+            .cart-table td {
+                padding: 25px 12px;
+                vertical-align: middle;
+            }
+
+        .text-center {
+            text-align: center !important;
+        }
+
+        .text-right {
+            text-align: right !important;
+        }
+
+        .product-cell {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 100px;
+            height: 100px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+            .product-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .product-size {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 4px;
+        }
+
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: white;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: all 0.2s;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+            .qty-btn:hover {
+                background: #f5f5f5;
+                color: #000;
+            }
+
+        .qty-display {
+            min-width: 30px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .item-total {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a1a;
+            min-width: 120px;
+            text-align: right;
+        }
+
+        .delete-btn {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            font-size: 20px;
+            color: #999;
+            transition: all 0.2s;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+            .delete-btn:hover {
+                background: #fee;
+                color: #dc3545;
+            }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+            .checkout-btn:hover {
+                background: #333;
+                transform: translateY(-1px);
+            }
+
+        .summary-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 15px;
+            color: #666;
+        }
+
+        .discount-box {
+            background: #fff9e6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .discount-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            color: #9a6700;
+        }
+
+        .discount-label {
+            font-weight: 500;
+        }
+
+        .discount-value {
+            font-weight: 600;
+        }
+
+        .estimate-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 15px;
+            color: #666;
+        }
+
+        .total-section {
+            border-top: 2px solid #e8e8e8;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .terms {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+            .checkbox-container input[type="checkbox"] {
+                margin-top: 3px;
+                cursor: pointer;
+            }
+
+            .checkbox-container label {
+                font-size: 13px;
+                color: #666;
+                line-height: 1.5;
+                cursor: pointer;
+            }
+
+            .checkbox-container a {
+                color: #0066cc;
+                text-decoration: none;
+            }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: #1a1a1a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+            .checkout-btn:hover {
+                background: #333;
+                transform: translateY(-1px);
+                color: white;
+            }
+
+        @@media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-section {
+                position: static;
+            }
+
+            .cart-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .product-cell {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cart-section">
+            <h1 class="cart-header">Giỏ hàng của bạn</h1>
+
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th class="text-center">Số lượng</th>
+                        <th class="text-right">Tổng</th>
+                        <th class="text-center">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.list)
+                    {
+                        <tr>
+                            <td>
+                                <div class="product-cell">
+                                    <div class="product-image">
+                                        <img src="@Url.Content("~/Content/images/"+ item.AnhDaiDien)" alt="@item.TenSP">
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="product-name">@item.TenSP</div>
+                                        <div class="product-price">@item.Gia.ToString("N0") VNĐ</div>
+                                        <div class="product-size">
+                                            Size: @item.Size | Màu: @item.Mau
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <div class="quantity-controls">
+                                    <a href="@Url.Action("UpdateSL", "Cart", new { id = item.MaSP, type = 1, size = item.Size, mau = item.Mau })" class="qty-btn">−</a>
+                                    <span class="qty-display">@item.SoLuong</span>
+                                    <a href="@Url.Action("UpdateSL", "Cart", new { id = item.MaSP, type = 0, size = item.Size, mau = item.Mau })" class="qty-btn">+</a>
+                                </div>
+                            </td>
+                            <td class="text-right">
+                                <div class="item-total">@item.ThanhTien.ToString("N0") VND</div>
+                            </td>
+                            <td class="text-center">
+                                <a href="@Url.Action("RemoveSP", "Cart", new { id = item.MaSP, size = item.Size, mau = item.Mau })" class="delete-btn">🗑️</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <a href="/" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Tiếp tục mua sắm
+                </a>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <h2 class="summary-title">Tóm tắt đơn hàng</h2>
+
+            <div class="estimate-row">
+                <span>Tổng số tiền</span>
+                <span style="font-weight: 600; color: #1a1a1a;">@Model.TongThanhTien().ToString("N0") VND</span>
+            </div>
+
+            <div class="d-flex justify-content-between mb-2">
+                <span>Phí vận chuyển:</span>
+                <span class="fw-bold">0 VND</span>
+            </div>
+
+            <div class="total-section">
+                <div class="total-row">
+                    <span>Tổng thanh toán:</span>
+                    <span>@Model.TongThanhTien().ToString("N0") VND</span>
+                </div>
+            </div>
+
+            <a href="@Url.Action("Checkout","Cart")" class="checkout-btn">Đặt hàng miễn phí ship</a>
+        </div>
+    </div>
+</body>
+</html>

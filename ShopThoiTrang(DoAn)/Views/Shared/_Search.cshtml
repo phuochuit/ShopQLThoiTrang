@@ -1,0 +1,450 @@
+﻿@model List<ShopThoiTrang_DoAn_.SanPham>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả tìm kiếm - YaMe.vn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .breadcrumb {
+            background: white;
+            padding: 15px 40px;
+            font-size: 14px;
+            color: #666;
+        }
+
+            .breadcrumb a {
+                color: #666;
+                text-decoration: none;
+            }
+
+                .breadcrumb a:hover {
+                    color: #000;
+                }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 40px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #2c2c2c;
+        }
+
+        .search-bar {
+            max-width: 850px;
+            margin: 0 auto 50px;
+            position: relative;
+        }
+
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px 20px;
+            transition: border-color 0.3s;
+        }
+
+            .search-input-wrapper:focus-within {
+                border-color: #d4a574;
+            }
+
+        .search-label {
+            font-size: 13px;
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .clear-btn, .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 18px;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+            .clear-btn:hover, .search-btn:hover {
+                color: #000;
+            }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .filter-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .filter-select {
+            padding: 8px 30px 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        .filter-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-label {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .sort-select {
+            padding: 8px 35px 8px 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        .result-count {
+            font-size: 14px;
+            color: #666;
+            margin-left: 15px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+
+        .product-image-wrapper {
+            position: relative;
+            padding-top: 100%;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 600;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+            min-height: 40px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e74c3c;
+        }
+
+        .original-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        @@media (max-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .filters {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        <a href="/">Trang chủ</a> › Tìm kiếm
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Kết quả tìm kiếm</h1>
+        @using (Html.BeginForm("TimKiemTheoTuKhoa", "Home", FormMethod.Get))
+        {
+            <div class="search-bar">
+                <div class="search-input-wrapper">
+                    <span class="search-label">Tìm kiếm</span>
+                    <input type="text" class="search-input" value="@ViewBag.Keyword" name="keyword" placeholder="Nhập tên sản phẩm...">
+                    <button type="button" class="clear-btn">✕</button>
+                    <button type="submit" class="search-btn">🔍</button>
+                </div>
+            </div>
+        }
+
+        <div class="filters">
+            <div class="filter-left">
+                <div class="filter-item">
+                    <span>Bộ lọc:</span>
+                </div>
+                <div class="filter-item">
+                    <select class="filter-select" id="filter-color">
+                        <option value="">Màu sắc</option>
+
+                        @foreach (var mau in ViewBag.DanhSachMau as List<string>)
+                        {
+                            <option value="@mau" @(ViewBag.Mau == mau ? "selected" : "")>@mau</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="filter-right">
+                <span class="sort-label">Sắp xếp theo:</span>
+                <select id="filter-price" class="form-select" style="max-width:200px;">
+                    <option value="">Giá</option>
+                    <option value="1" @(ViewBag.MucGia == 1 ? "selected" : "")>50.000 - 200.000</option>
+                    <option value="2" @(ViewBag.MucGia == 2 ? "selected" : "")>200.000 - 400.000</option>
+                    <option value="3" @(ViewBag.MucGia == 3 ? "selected" : "")>400.000 - 600.000</option>
+                    <option value="4" @(ViewBag.MucGia == 4 ? "selected" : "")>Trên 600.000</option>
+                </select>
+
+
+                <span class="result-count">@Model.Count() kết quả</span>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <div id="product-container" class="row g-4 justify-content-center">
+                @foreach (var item in Model)
+                {
+                    <div class="col-6 col-md-3 product-card-wrapper">
+                        <a href="@Url.Action("Details", "Home", new { id = item.MaSP })" style="text-decoration:none;">
+                            <div class="card border-0 product-card">
+                                <div class="overflow-hidden">
+                                    <img src="@Url.Content("~/Content/images/" + item.AnhDaiDien)" class="card-img-top" alt="@item.TenSP">
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-light text-dark mb-2">Miễn Phí Ship</span>
+                                    <p class="card-text product-name text-secondary mb-1" style="font-size:14px;">@item.TenSP</p>
+                                    <p class="fw-semibold mb-0">@item.Gia.Value.ToString("N0") VND</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+
+            <nav aria-label="Product pagination">
+                <ul id="pagination" class="pagination justify-content-center mt-4"></ul>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.clear-btn').addEventListener('click', function () {
+            document.querySelector('.search-input').value = '';
+            document.querySelector('.search-input').focus();
+        });
+
+        document.querySelector('.search-btn').addEventListener('click', function () {
+            const searchValue = document.querySelector('.search-input').value;
+            console.log('Searching for:', searchValue);
+        });
+
+        document.querySelector('.search-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search-btn').click();
+            }
+        });
+
+        document.querySelectorAll('.filter-select, .sort-select').forEach(select => {
+            select.addEventListener('change', function () {
+                console.log('Filter changed:', this.value);
+            });
+        });
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function () {
+                console.log('Product clicked');
+            });
+        });
+
+        const products = Array.from(document.querySelectorAll('.product-card-wrapper'));
+        const pageSize = 8;
+        let currentPage = 1;
+        const totalPages = Math.ceil(products.length / pageSize);
+
+        function showPage(page) {
+            currentPage = page;
+            const start = (page - 1) * pageSize;
+            const end = start + pageSize;
+
+            products.forEach((p, i) => {
+                p.style.display = (i >= start && i < end) ? 'block' : 'none';
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const container = document.getElementById('pagination');
+            container.innerHTML = '';
+
+            const prev = document.createElement('li');
+            prev.className = 'page-item ' + (currentPage === 1 ? 'disabled' : '');
+            prev.innerHTML = `<a class="page-link border-0" href="#">&#60;</a>`;
+            prev.onclick = () => { if (currentPage > 1) showPage(currentPage - 1); };
+            container.appendChild(prev);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li');
+                li.className = 'page-item ' + (i === currentPage ? 'active' : '');
+                li.innerHTML = `<a class="page-link border-0">${i}</a>`;
+                li.onclick = () => showPage(i);
+                container.appendChild(li);
+            }
+
+            const next = document.createElement('li');
+            next.className = 'page-item ' + (currentPage === totalPages ? 'disabled' : '');
+            next.innerHTML = `<a class="page-link border-0" href="#">&#62;</a>`;
+            next.onclick = () => { if (currentPage < totalPages) showPage(currentPage + 1); };
+            container.appendChild(next);
+        }
+
+        showPage(1);
+
+        @if (TempData["ThongBao"] != null)
+        {
+            <text>
+        alert('@Html.Raw(TempData["ThongBao"])');
+            </text>
+        }
+
+        document.getElementById("filter-color").addEventListener("change", function () {
+            const mau = this.value;
+            if (mau !== "") {
+                window.location.href = "/Home/LocTheoMau?mau=" + encodeURIComponent(mau);
+            }
+        });
+
+        document.getElementById("filter-price").addEventListener("change", function () {
+            let mucGia = this.value;
+            let mau = new URLSearchParams(window.location.search).get("mau") || "";
+            window.location.href = "/Home/LocSanPham?mucGia=" + mucGia + "&mau=" + mau;
+        });
+
+        function locTheoMau(mau) {
+            let mucGia = new URLSearchParams(window.location.search).get("mucGia") || "";
+            window.location.href = "/Home/LocSanPham?mucGia=" + mucGia + "&mau=" + mau;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,1177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{156ED66F-C327-401F-9FBF-381EFBF8CA79}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopThoiTrang_DoAn_</RootNamespace>
+    <AssemblyName>ShopThoiTrang%28DoAn%29</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44391</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.6.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.3.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.3.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BienTheSanPham.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChiTietHoaDon.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ApiDanhMucController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageOrderController.cs" />
+    <Compile Include="Controllers\ManageProductController.cs" />
+    <Compile Include="Controllers\TestApiController.cs" />
+    <Compile Include="Controllers\ThongKeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="DanhMuc.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HinhAnh.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HoaDon.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KhachHang.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MegaMenuViewModel.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="NhanVien.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QL_ShopThoiTrang.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QL_ShopThoiTrang.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QL_ShopThoiTrang.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QL_ShopThoiTrang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QL_ShopThoiTrang.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SanPham.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TinhTrang.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VaiTro.cs">
+      <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap-grid.rtl.css" />
+    <Content Include="Content\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\css\bootstrap-utilities.css" />
+    <Content Include="Content\css\bootstrap-utilities.min.css" />
+    <Content Include="Content\css\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.rtl.css" />
+    <Content Include="Content\css\bootstrap.rtl.min.css" />
+    <Content Include="Content\images\ao1.png" />
+    <Content Include="Content\images\ao10.png" />
+    <Content Include="Content\images\ao10_1.png" />
+    <Content Include="Content\images\ao10_2.png" />
+    <Content Include="Content\images\ao10_3.png" />
+    <Content Include="Content\images\ao10_4.png" />
+    <Content Include="Content\images\ao10_5.png" />
+    <Content Include="Content\images\ao11.png" />
+    <Content Include="Content\images\ao11_1.png" />
+    <Content Include="Content\images\ao11_2.png" />
+    <Content Include="Content\images\ao11_3.png" />
+    <Content Include="Content\images\ao11_4.png" />
+    <Content Include="Content\images\ao11_5.png" />
+    <Content Include="Content\images\ao12.png" />
+    <Content Include="Content\images\ao12_1.png" />
+    <Content Include="Content\images\ao12_2.png" />
+    <Content Include="Content\images\ao12_3.png" />
+    <Content Include="Content\images\ao12_4.png" />
+    <Content Include="Content\images\ao12_5.png" />
+    <Content Include="Content\images\ao13.png" />
+    <Content Include="Content\images\ao13_1.png" />
+    <Content Include="Content\images\ao13_2.png" />
+    <Content Include="Content\images\ao13_3.png" />
+    <Content Include="Content\images\ao13_4.png" />
+    <Content Include="Content\images\ao13_5.png" />
+    <Content Include="Content\images\ao14.png" />
+    <Content Include="Content\images\ao14_1.png" />
+    <Content Include="Content\images\ao14_2.png" />
+    <Content Include="Content\images\ao14_3.png" />
+    <Content Include="Content\images\ao14_4.png" />
+    <Content Include="Content\images\ao14_5.png" />
+    <Content Include="Content\images\ao15.png" />
+    <Content Include="Content\images\ao15_1.png" />
+    <Content Include="Content\images\ao15_2.png" />
+    <Content Include="Content\images\ao15_3.png" />
+    <Content Include="Content\images\ao15_4.png" />
+    <Content Include="Content\images\ao15_5.png" />
+    <Content Include="Content\images\ao16.png" />
+    <Content Include="Content\images\ao16_1.png" />
+    <Content Include="Content\images\ao16_2.png" />
+    <Content Include="Content\images\ao16_3.png" />
+    <Content Include="Content\images\ao16_4.png" />
+    <Content Include="Content\images\ao16_5.png" />
+    <Content Include="Content\images\ao17.png" />
+    <Content Include="Content\images\ao17_1.png" />
+    <Content Include="Content\images\ao17_2.png" />
+    <Content Include="Content\images\ao17_3.png" />
+    <Content Include="Content\images\ao17_4.png" />
+    <Content Include="Content\images\ao17_5.png" />
+    <Content Include="Content\images\ao18.png" />
+    <Content Include="Content\images\ao18_1.png" />
+    <Content Include="Content\images\ao18_2.png" />
+    <Content Include="Content\images\ao18_3.png" />
+    <Content Include="Content\images\ao18_4.png" />
+    <Content Include="Content\images\ao18_5.png" />
+    <Content Include="Content\images\ao19.png" />
+    <Content Include="Content\images\ao19_1.png" />
+    <Content Include="Content\images\ao19_2.png" />
+    <Content Include="Content\images\ao19_3.png" />
+    <Content Include="Content\images\ao19_4.png" />
+    <Content Include="Content\images\ao19_5.png" />
+    <Content Include="Content\images\ao1_1.png" />
+    <Content Include="Content\images\ao1_2.png" />
+    <Content Include="Content\images\ao1_3.png" />
+    <Content Include="Content\images\ao1_4.png" />
+    <Content Include="Content\images\ao1_5.png" />
+    <Content Include="Content\images\ao2.png" />
+    <Content Include="Content\images\ao20.png" />
+    <Content Include="Content\images\ao20_1.png" />
+    <Content Include="Content\images\ao20_2.png" />
+    <Content Include="Content\images\ao20_3.png" />
+    <Content Include="Content\images\ao20_4.png" />
+    <Content Include="Content\images\ao20_5.png" />
+    <Content Include="Content\images\ao21.png" />
+    <Content Include="Content\images\ao21_1.png" />
+    <Content Include="Content\images\ao21_2.png" />
+    <Content Include="Content\images\ao21_3.png" />
+    <Content Include="Content\images\ao21_4.png" />
+    <Content Include="Content\images\ao21_5.png" />
+    <Content Include="Content\images\ao22.png" />
+    <Content Include="Content\images\ao22_1.png" />
+    <Content Include="Content\images\ao22_2.png" />
+    <Content Include="Content\images\ao22_3.png" />
+    <Content Include="Content\images\ao22_4.png" />
+    <Content Include="Content\images\ao22_5.png" />
+    <Content Include="Content\images\ao23.png" />
+    <Content Include="Content\images\ao23_1.png" />
+    <Content Include="Content\images\ao23_2.png" />
+    <Content Include="Content\images\ao23_3.png" />
+    <Content Include="Content\images\ao23_4.png" />
+    <Content Include="Content\images\ao23_5.png" />
+    <Content Include="Content\images\ao24.png" />
+    <Content Include="Content\images\ao24_1.png" />
+    <Content Include="Content\images\ao24_2.png" />
+    <Content Include="Content\images\ao24_3.png" />
+    <Content Include="Content\images\ao24_4.png" />
+    <Content Include="Content\images\ao24_5.png" />
+    <Content Include="Content\images\ao25.png" />
+    <Content Include="Content\images\ao25_1.png" />
+    <Content Include="Content\images\ao25_2.png" />
+    <Content Include="Content\images\ao25_3.png" />
+    <Content Include="Content\images\ao25_4.png" />
+    <Content Include="Content\images\ao25_5.png" />
+    <Content Include="Content\images\ao26.png" />
+    <Content Include="Content\images\ao26_1.png" />
+    <Content Include="Content\images\ao26_2.png" />
+    <Content Include="Content\images\ao26_3.png" />
+    <Content Include="Content\images\ao26_4.png" />
+    <Content Include="Content\images\ao26_5.png" />
+    <Content Include="Content\images\ao27.png" />
+    <Content Include="Content\images\ao27_1.png" />
+    <Content Include="Content\images\ao27_2.png" />
+    <Content Include="Content\images\ao27_3.png" />
+    <Content Include="Content\images\ao27_4.png" />
+    <Content Include="Content\images\ao27_5.png" />
+    <Content Include="Content\images\ao28.png" />
+    <Content Include="Content\images\ao28_1.png" />
+    <Content Include="Content\images\ao28_2.png" />
+    <Content Include="Content\images\ao28_3.png" />
+    <Content Include="Content\images\ao28_4.png" />
+    <Content Include="Content\images\ao28_5.png" />
+    <Content Include="Content\images\ao29.png" />
+    <Content Include="Content\images\ao29_1.png" />
+    <Content Include="Content\images\ao29_2.png" />
+    <Content Include="Content\images\ao29_3.png" />
+    <Content Include="Content\images\ao29_4.png" />
+    <Content Include="Content\images\ao29_5.png" />
+    <Content Include="Content\images\ao2_1.png" />
+    <Content Include="Content\images\ao2_2.png" />
+    <Content Include="Content\images\ao2_3.png" />
+    <Content Include="Content\images\ao2_4.png" />
+    <Content Include="Content\images\ao2_5.png" />
+    <Content Include="Content\images\ao3.png" />
+    <Content Include="Content\images\ao30.png" />
+    <Content Include="Content\images\ao30_1.png" />
+    <Content Include="Content\images\ao30_2.png" />
+    <Content Include="Content\images\ao30_3.png" />
+    <Content Include="Content\images\ao30_4.png" />
+    <Content Include="Content\images\ao30_5.png" />
+    <Content Include="Content\images\ao31.png" />
+    <Content Include="Content\images\ao31_1.png" />
+    <Content Include="Content\images\ao31_2.png" />
+    <Content Include="Content\images\ao31_3.png" />
+    <Content Include="Content\images\ao31_4.png" />
+    <Content Include="Content\images\ao31_5.png" />
+    <Content Include="Content\images\ao32.png" />
+    <Content Include="Content\images\ao32_1.png" />
+    <Content Include="Content\images\ao32_2.png" />
+    <Content Include="Content\images\ao32_3.png" />
+    <Content Include="Content\images\ao32_4.png" />
+    <Content Include="Content\images\ao32_5.png" />
+    <Content Include="Content\images\ao33.png" />
+    <Content Include="Content\images\ao33_1.png" />
+    <Content Include="Content\images\ao33_2.png" />
+    <Content Include="Content\images\ao33_3.png" />
+    <Content Include="Content\images\ao33_4.png" />
+    <Content Include="Content\images\ao33_5.png" />
+    <Content Include="Content\images\ao34.png" />
+    <Content Include="Content\images\ao34_1.png" />
+    <Content Include="Content\images\ao34_2.png" />
+    <Content Include="Content\images\ao34_3.png" />
+    <Content Include="Content\images\ao34_4.png" />
+    <Content Include="Content\images\ao34_5.png" />
+    <Content Include="Content\images\ao35.png" />
+    <Content Include="Content\images\ao35_1.png" />
+    <Content Include="Content\images\ao35_2.png" />
+    <Content Include="Content\images\ao35_3.png" />
+    <Content Include="Content\images\ao35_4.png" />
+    <Content Include="Content\images\ao35_5.png" />
+    <Content Include="Content\images\ao36.png" />
+    <Content Include="Content\images\ao36_1.png" />
+    <Content Include="Content\images\ao36_2.png" />
+    <Content Include="Content\images\ao36_3.png" />
+    <Content Include="Content\images\ao36_4.png" />
+    <Content Include="Content\images\ao36_5.png" />
+    <Content Include="Content\images\ao37.png" />
+    <Content Include="Content\images\ao37_1.png" />
+    <Content Include="Content\images\ao37_2.png" />
+    <Content Include="Content\images\ao37_3.png" />
+    <Content Include="Content\images\ao37_4.png" />
+    <Content Include="Content\images\ao37_5.png" />
+    <Content Include="Content\images\ao38.png" />
+    <Content Include="Content\images\ao38_1.png" />
+    <Content Include="Content\images\ao38_2.png" />
+    <Content Include="Content\images\ao38_3.png" />
+    <Content Include="Content\images\ao38_4.png" />
+    <Content Include="Content\images\ao38_5.png" />
+    <Content Include="Content\images\ao39.png" />
+    <Content Include="Content\images\ao39_1.png" />
+    <Content Include="Content\images\ao39_2.png" />
+    <Content Include="Content\images\ao39_3.png" />
+    <Content Include="Content\images\ao39_4.png" />
+    <Content Include="Content\images\ao39_5.png" />
+    <Content Include="Content\images\ao3_1.png" />
+    <Content Include="Content\images\ao3_2.png" />
+    <Content Include="Content\images\ao3_3.png" />
+    <Content Include="Content\images\ao3_4.png" />
+    <Content Include="Content\images\ao3_5.png" />
+    <Content Include="Content\images\ao4.png" />
+    <Content Include="Content\images\ao40.png" />
+    <Content Include="Content\images\ao40_1.png" />
+    <Content Include="Content\images\ao40_2.png" />
+    <Content Include="Content\images\ao40_3.png" />
+    <Content Include="Content\images\ao40_4.png" />
+    <Content Include="Content\images\ao40_5.png" />
+    <Content Include="Content\images\ao41.png" />
+    <Content Include="Content\images\ao41_1.png" />
+    <Content Include="Content\images\ao41_2.png" />
+    <Content Include="Content\images\ao41_3.png" />
+    <Content Include="Content\images\ao41_4.png" />
+    <Content Include="Content\images\ao41_5.png" />
+    <Content Include="Content\images\ao42.png" />
+    <Content Include="Content\images\ao42_1.png" />
+    <Content Include="Content\images\ao42_2.png" />
+    <Content Include="Content\images\ao42_3.png" />
+    <Content Include="Content\images\ao42_4.png" />
+    <Content Include="Content\images\ao42_5.png" />
+    <Content Include="Content\images\ao43.png" />
+    <Content Include="Content\images\ao43_1.png" />
+    <Content Include="Content\images\ao43_2.png" />
+    <Content Include="Content\images\ao43_3.png" />
+    <Content Include="Content\images\ao43_4.png" />
+    <Content Include="Content\images\ao43_5.png" />
+    <Content Include="Content\images\ao44.png" />
+    <Content Include="Content\images\ao44_1.png" />
+    <Content Include="Content\images\ao44_2.png" />
+    <Content Include="Content\images\ao44_3.png" />
+    <Content Include="Content\images\ao44_4.png" />
+    <Content Include="Content\images\ao44_5.png" />
+    <Content Include="Content\images\ao45.png" />
+    <Content Include="Content\images\ao45_1.png" />
+    <Content Include="Content\images\ao45_2.png" />
+    <Content Include="Content\images\ao45_3.png" />
+    <Content Include="Content\images\ao45_4.png" />
+    <Content Include="Content\images\ao45_5.png" />
+    <Content Include="Content\images\ao46.png" />
+    <Content Include="Content\images\ao46_1.png" />
+    <Content Include="Content\images\ao46_2.png" />
+    <Content Include="Content\images\ao46_3.png" />
+    <Content Include="Content\images\ao46_4.png" />
+    <Content Include="Content\images\ao46_5.png" />
+    <Content Include="Content\images\ao47.png" />
+    <Content Include="Content\images\ao47_1.png" />
+    <Content Include="Content\images\ao47_2.png" />
+    <Content Include="Content\images\ao47_3.png" />
+    <Content Include="Content\images\ao47_4.png" />
+    <Content Include="Content\images\ao47_5.png" />
+    <Content Include="Content\images\ao48.png" />
+    <Content Include="Content\images\ao48_1.png" />
+    <Content Include="Content\images\ao48_2.png" />
+    <Content Include="Content\images\ao48_3.png" />
+    <Content Include="Content\images\ao48_4.png" />
+    <Content Include="Content\images\ao48_5.png" />
+    <Content Include="Content\images\ao49.png" />
+    <Content Include="Content\images\ao49_1.png" />
+    <Content Include="Content\images\ao49_2.png" />
+    <Content Include="Content\images\ao49_3.png" />
+    <Content Include="Content\images\ao49_4.png" />
+    <Content Include="Content\images\ao49_5.png" />
+    <Content Include="Content\images\ao4_1.png" />
+    <Content Include="Content\images\ao4_2.png" />
+    <Content Include="Content\images\ao4_3.png" />
+    <Content Include="Content\images\ao4_4.png" />
+    <Content Include="Content\images\ao4_5.png" />
+    <Content Include="Content\images\ao5.png" />
+    <Content Include="Content\images\ao50.png" />
+    <Content Include="Content\images\ao50_1.png" />
+    <Content Include="Content\images\ao50_2.png" />
+    <Content Include="Content\images\ao50_3.png" />
+    <Content Include="Content\images\ao50_4.png" />
+    <Content Include="Content\images\ao50_5.png" />
+    <Content Include="Content\images\ao51.png" />
+    <Content Include="Content\images\ao51_1.png" />
+    <Content Include="Content\images\ao51_2.png" />
+    <Content Include="Content\images\ao51_3.png" />
+    <Content Include="Content\images\ao51_4.png" />
+    <Content Include="Content\images\ao51_5.png" />
+    <Content Include="Content\images\ao52.png" />
+    <Content Include="Content\images\ao52_1.png" />
+    <Content Include="Content\images\ao52_2.png" />
+    <Content Include="Content\images\ao52_3.png" />
+    <Content Include="Content\images\ao52_4.png" />
+    <Content Include="Content\images\ao52_5.png" />
+    <Content Include="Content\images\ao53.png" />
+    <Content Include="Content\images\ao53_1.png" />
+    <Content Include="Content\images\ao53_2.png" />
+    <Content Include="Content\images\ao53_3.png" />
+    <Content Include="Content\images\ao53_4.png" />
+    <Content Include="Content\images\ao53_5.png" />
+    <Content Include="Content\images\ao54.png" />
+    <Content Include="Content\images\ao54_1.png" />
+    <Content Include="Content\images\ao54_2.png" />
+    <Content Include="Content\images\ao54_3.png" />
+    <Content Include="Content\images\ao54_4.png" />
+    <Content Include="Content\images\ao54_5.png" />
+    <Content Include="Content\images\ao55.png" />
+    <Content Include="Content\images\ao55_1.png" />
+    <Content Include="Content\images\ao55_2.png" />
+    <Content Include="Content\images\ao55_3.png" />
+    <Content Include="Content\images\ao55_4.png" />
+    <Content Include="Content\images\ao55_5.png" />
+    <Content Include="Content\images\ao56.png" />
+    <Content Include="Content\images\ao56_1.png" />
+    <Content Include="Content\images\ao56_2.png" />
+    <Content Include="Content\images\ao56_3.png" />
+    <Content Include="Content\images\ao56_4.png" />
+    <Content Include="Content\images\ao56_5.png" />
+    <Content Include="Content\images\ao57.png" />
+    <Content Include="Content\images\ao57_1.png" />
+    <Content Include="Content\images\ao57_2.png" />
+    <Content Include="Content\images\ao57_3.png" />
+    <Content Include="Content\images\ao57_4.png" />
+    <Content Include="Content\images\ao57_5.png" />
+    <Content Include="Content\images\ao58.png" />
+    <Content Include="Content\images\ao58_1.png" />
+    <Content Include="Content\images\ao58_2.png" />
+    <Content Include="Content\images\ao58_3.png" />
+    <Content Include="Content\images\ao58_4.png" />
+    <Content Include="Content\images\ao58_5.png" />
+    <Content Include="Content\images\ao59.png" />
+    <Content Include="Content\images\ao59_1.png" />
+    <Content Include="Content\images\ao59_2.png" />
+    <Content Include="Content\images\ao59_3.png" />
+    <Content Include="Content\images\ao59_4.png" />
+    <Content Include="Content\images\ao59_5.png" />
+    <Content Include="Content\images\ao5_1.png" />
+    <Content Include="Content\images\ao5_2.png" />
+    <Content Include="Content\images\ao5_3.png" />
+    <Content Include="Content\images\ao5_4.png" />
+    <Content Include="Content\images\ao5_5.png" />
+    <Content Include="Content\images\ao6.png" />
+    <Content Include="Content\images\ao6_1.png" />
+    <Content Include="Content\images\ao6_2.png" />
+    <Content Include="Content\images\ao6_3.png" />
+    <Content Include="Content\images\ao6_4.png" />
+    <Content Include="Content\images\ao6_5.png" />
+    <Content Include="Content\images\ao7.png" />
+    <Content Include="Content\images\ao7_1.png" />
+    <Content Include="Content\images\ao7_2.png" />
+    <Content Include="Content\images\ao7_3.png" />
+    <Content Include="Content\images\ao7_4.png" />
+    <Content Include="Content\images\ao7_5.png" />
+    <Content Include="Content\images\ao8.png" />
+    <Content Include="Content\images\ao8_1.png" />
+    <Content Include="Content\images\ao8_2.png" />
+    <Content Include="Content\images\ao8_3.png" />
+    <Content Include="Content\images\ao8_4.png" />
+    <Content Include="Content\images\ao8_5.png" />
+    <Content Include="Content\images\ao9.png" />
+    <Content Include="Content\images\ao9_1.png" />
+    <Content Include="Content\images\ao9_2.png" />
+    <Content Include="Content\images\ao9_3.png" />
+    <Content Include="Content\images\ao9_4.png" />
+    <Content Include="Content\images\ao9_5.png" />
+    <Content Include="Content\images\quan-58.png" />
+    <Content Include="Content\images\quan-58_1.png" />
+    <Content Include="Content\images\quan-58_2.png" />
+    <Content Include="Content\images\quan-58_3.png" />
+    <Content Include="Content\images\quan-58_4.png" />
+    <Content Include="Content\images\quan1.png" />
+    <Content Include="Content\images\quan10.png" />
+    <Content Include="Content\images\quan10_1.png" />
+    <Content Include="Content\images\quan10_2.png" />
+    <Content Include="Content\images\quan10_3.png" />
+    <Content Include="Content\images\quan10_4.png" />
+    <Content Include="Content\images\quan10_5.png" />
+    <Content Include="Content\images\quan11.png" />
+    <Content Include="Content\images\quan11_1.png" />
+    <Content Include="Content\images\quan11_2.png" />
+    <Content Include="Content\images\quan11_3.png" />
+    <Content Include="Content\images\quan11_4.png" />
+    <Content Include="Content\images\quan11_5.png" />
+    <Content Include="Content\images\quan12.png" />
+    <Content Include="Content\images\quan12_1.png" />
+    <Content Include="Content\images\quan12_2.png" />
+    <Content Include="Content\images\quan12_3.png" />
+    <Content Include="Content\images\quan12_4.png" />
+    <Content Include="Content\images\quan12_5.png" />
+    <Content Include="Content\images\quan13.png" />
+    <Content Include="Content\images\quan13_1.png" />
+    <Content Include="Content\images\quan13_2.png" />
+    <Content Include="Content\images\quan13_3.png" />
+    <Content Include="Content\images\quan13_4.png" />
+    <Content Include="Content\images\quan13_5.png" />
+    <Content Include="Content\images\quan14.png" />
+    <Content Include="Content\images\quan14_1.png" />
+    <Content Include="Content\images\quan14_2.png" />
+    <Content Include="Content\images\quan14_3.png" />
+    <Content Include="Content\images\quan14_4.png" />
+    <Content Include="Content\images\quan14_5.png" />
+    <Content Include="Content\images\quan15.png" />
+    <Content Include="Content\images\quan15_1.png" />
+    <Content Include="Content\images\quan15_2.png" />
+    <Content Include="Content\images\quan15_3.png" />
+    <Content Include="Content\images\quan15_4.png" />
+    <Content Include="Content\images\quan15_5.png" />
+    <Content Include="Content\images\quan16.png" />
+    <Content Include="Content\images\quan16_1.png" />
+    <Content Include="Content\images\quan16_2.png" />
+    <Content Include="Content\images\quan16_3.png" />
+    <Content Include="Content\images\quan16_4.png" />
+    <Content Include="Content\images\quan16_5.png" />
+    <Content Include="Content\images\quan17.png" />
+    <Content Include="Content\images\quan17_1.png" />
+    <Content Include="Content\images\quan17_2.png" />
+    <Content Include="Content\images\quan17_3.png" />
+    <Content Include="Content\images\quan17_4.png" />
+    <Content Include="Content\images\quan17_5.png" />
+    <Content Include="Content\images\quan18.png" />
+    <Content Include="Content\images\quan18_1.png" />
+    <Content Include="Content\images\quan18_2.png" />
+    <Content Include="Content\images\quan18_3.png" />
+    <Content Include="Content\images\quan18_4.png" />
+    <Content Include="Content\images\quan18_5.png" />
+    <Content Include="Content\images\quan19.png" />
+    <Content Include="Content\images\quan19_1.png" />
+    <Content Include="Content\images\quan19_2.png" />
+    <Content Include="Content\images\quan19_3.png" />
+    <Content Include="Content\images\quan19_4.png" />
+    <Content Include="Content\images\quan19_5.png" />
+    <Content Include="Content\images\quan1_1.png" />
+    <Content Include="Content\images\quan1_2.png" />
+    <Content Include="Content\images\quan1_3.png" />
+    <Content Include="Content\images\quan1_4.png" />
+    <Content Include="Content\images\quan1_5.png" />
+    <Content Include="Content\images\quan2.png" />
+    <Content Include="Content\images\quan20.png" />
+    <Content Include="Content\images\quan20_1.png" />
+    <Content Include="Content\images\quan20_2.png" />
+    <Content Include="Content\images\quan20_3.png" />
+    <Content Include="Content\images\quan20_4.png" />
+    <Content Include="Content\images\quan20_5.png" />
+    <Content Include="Content\images\quan21.png" />
+    <Content Include="Content\images\quan21_1.png" />
+    <Content Include="Content\images\quan21_2.png" />
+    <Content Include="Content\images\quan21_3.png" />
+    <Content Include="Content\images\quan21_4.png" />
+    <Content Include="Content\images\quan21_5.png" />
+    <Content Include="Content\images\quan22.png" />
+    <Content Include="Content\images\quan22_1.png" />
+    <Content Include="Content\images\quan22_2.png" />
+    <Content Include="Content\images\quan22_3.png" />
+    <Content Include="Content\images\quan22_4.png" />
+    <Content Include="Content\images\quan22_5.png" />
+    <Content Include="Content\images\quan23.png" />
+    <Content Include="Content\images\quan23_1.png" />
+    <Content Include="Content\images\quan23_2.png" />
+    <Content Include="Content\images\quan23_3.png" />
+    <Content Include="Content\images\quan23_4.png" />
+    <Content Include="Content\images\quan23_5.png" />
+    <Content Include="Content\images\quan24.png" />
+    <Content Include="Content\images\quan24_1.png" />
+    <Content Include="Content\images\quan24_2.png" />
+    <Content Include="Content\images\quan24_3.png" />
+    <Content Include="Content\images\quan24_4.png" />
+    <Content Include="Content\images\quan24_5.png" />
+    <Content Include="Content\images\quan25.png" />
+    <Content Include="Content\images\quan25_1.png" />
+    <Content Include="Content\images\quan25_2.png" />
+    <Content Include="Content\images\quan25_3.png" />
+    <Content Include="Content\images\quan25_4.png" />
+    <Content Include="Content\images\quan25_5.png" />
+    <Content Include="Content\images\quan26.png" />
+    <Content Include="Content\images\quan26_1.png" />
+    <Content Include="Content\images\quan26_2.png" />
+    <Content Include="Content\images\quan26_3.png" />
+    <Content Include="Content\images\quan26_4.png" />
+    <Content Include="Content\images\quan26_5.png" />
+    <Content Include="Content\images\quan27.png" />
+    <Content Include="Content\images\quan27_1.png" />
+    <Content Include="Content\images\quan27_2.png" />
+    <Content Include="Content\images\quan27_3.png" />
+    <Content Include="Content\images\quan27_4.png" />
+    <Content Include="Content\images\quan27_5.png" />
+    <Content Include="Content\images\quan28.png" />
+    <Content Include="Content\images\quan28_1.png" />
+    <Content Include="Content\images\quan28_2.png" />
+    <Content Include="Content\images\quan28_3.png" />
+    <Content Include="Content\images\quan28_4.png" />
+    <Content Include="Content\images\quan28_5.png" />
+    <Content Include="Content\images\quan29.png" />
+    <Content Include="Content\images\quan29_1.png" />
+    <Content Include="Content\images\quan29_2.png" />
+    <Content Include="Content\images\quan29_3.png" />
+    <Content Include="Content\images\quan29_4.png" />
+    <Content Include="Content\images\quan29_5.png" />
+    <Content Include="Content\images\quan2_1.png" />
+    <Content Include="Content\images\quan2_2.png" />
+    <Content Include="Content\images\quan2_3.png" />
+    <Content Include="Content\images\quan2_4.png" />
+    <Content Include="Content\images\quan2_5.png" />
+    <Content Include="Content\images\quan3.png" />
+    <Content Include="Content\images\quan30.png" />
+    <Content Include="Content\images\quan30_1.png" />
+    <Content Include="Content\images\quan30_2.png" />
+    <Content Include="Content\images\quan30_3.png" />
+    <Content Include="Content\images\quan30_4.png" />
+    <Content Include="Content\images\quan30_5.png" />
+    <Content Include="Content\images\quan31.png" />
+    <Content Include="Content\images\quan31_1.png" />
+    <Content Include="Content\images\quan31_2.png" />
+    <Content Include="Content\images\quan31_3.png" />
+    <Content Include="Content\images\quan31_4.png" />
+    <Content Include="Content\images\quan31_5.png" />
+    <Content Include="Content\images\quan32.png" />
+    <Content Include="Content\images\quan32_1.png" />
+    <Content Include="Content\images\quan32_2.png" />
+    <Content Include="Content\images\quan32_3.png" />
+    <Content Include="Content\images\quan32_4.png" />
+    <Content Include="Content\images\quan32_5.png" />
+    <Content Include="Content\images\quan33.png" />
+    <Content Include="Content\images\quan33_1.png" />
+    <Content Include="Content\images\quan33_2.png" />
+    <Content Include="Content\images\quan33_3.png" />
+    <Content Include="Content\images\quan33_4.png" />
+    <Content Include="Content\images\quan33_5.png" />
+    <Content Include="Content\images\quan34.png" />
+    <Content Include="Content\images\quan34_1.png" />
+    <Content Include="Content\images\quan34_2.png" />
+    <Content Include="Content\images\quan34_3.png" />
+    <Content Include="Content\images\quan34_4.png" />
+    <Content Include="Content\images\quan34_5.png" />
+    <Content Include="Content\images\quan35.png" />
+    <Content Include="Content\images\quan35_1.png" />
+    <Content Include="Content\images\quan35_2.png" />
+    <Content Include="Content\images\quan35_3.png" />
+    <Content Include="Content\images\quan35_4.png" />
+    <Content Include="Content\images\quan35_5.png" />
+    <Content Include="Content\images\quan36.png" />
+    <Content Include="Content\images\quan36_1.png" />
+    <Content Include="Content\images\quan36_2.png" />
+    <Content Include="Content\images\quan36_3.png" />
+    <Content Include="Content\images\quan36_4.png" />
+    <Content Include="Content\images\quan36_5.png" />
+    <Content Include="Content\images\quan37.png" />
+    <Content Include="Content\images\quan37_1.png" />
+    <Content Include="Content\images\quan37_2.png" />
+    <Content Include="Content\images\quan37_3.png" />
+    <Content Include="Content\images\quan37_4.png" />
+    <Content Include="Content\images\quan37_5.png" />
+    <Content Include="Content\images\quan38.png" />
+    <Content Include="Content\images\quan38_1.png" />
+    <Content Include="Content\images\quan38_2.png" />
+    <Content Include="Content\images\quan38_3.png" />
+    <Content Include="Content\images\quan38_4.png" />
+    <Content Include="Content\images\quan38_5.png" />
+    <Content Include="Content\images\quan39.png" />
+    <Content Include="Content\images\quan39_1.png" />
+    <Content Include="Content\images\quan39_2.png" />
+    <Content Include="Content\images\quan39_3.png" />
+    <Content Include="Content\images\quan39_4.png" />
+    <Content Include="Content\images\quan39_5.png" />
+    <Content Include="Content\images\quan3_1.png" />
+    <Content Include="Content\images\quan3_2.png" />
+    <Content Include="Content\images\quan3_3.png" />
+    <Content Include="Content\images\quan3_4.png" />
+    <Content Include="Content\images\quan3_5.png" />
+    <Content Include="Content\images\quan4.png" />
+    <Content Include="Content\images\quan40.png" />
+    <Content Include="Content\images\quan40_1.png" />
+    <Content Include="Content\images\quan40_2.png" />
+    <Content Include="Content\images\quan40_3.png" />
+    <Content Include="Content\images\quan40_4.png" />
+    <Content Include="Content\images\quan40_5.png" />
+    <Content Include="Content\images\quan41.png" />
+    <Content Include="Content\images\quan41_1.png" />
+    <Content Include="Content\images\quan41_2.png" />
+    <Content Include="Content\images\quan41_3.png" />
+    <Content Include="Content\images\quan41_4.png" />
+    <Content Include="Content\images\quan41_5.png" />
+    <Content Include="Content\images\quan42.png" />
+    <Content Include="Content\images\quan42_1.png" />
+    <Content Include="Content\images\quan42_2.png" />
+    <Content Include="Content\images\quan42_3.png" />
+    <Content Include="Content\images\quan42_4.png" />
+    <Content Include="Content\images\quan42_5.png" />
+    <Content Include="Content\images\quan43.png" />
+    <Content Include="Content\images\quan43_1.png" />
+    <Content Include="Content\images\quan43_2.png" />
+    <Content Include="Content\images\quan43_3.png" />
+    <Content Include="Content\images\quan43_4.png" />
+    <Content Include="Content\images\quan43_5.png" />
+    <Content Include="Content\images\quan44.png" />
+    <Content Include="Content\images\quan44_1.png" />
+    <Content Include="Content\images\quan44_2.png" />
+    <Content Include="Content\images\quan44_3.png" />
+    <Content Include="Content\images\quan44_4.png" />
+    <Content Include="Content\images\quan44_5.png" />
+    <Content Include="Content\images\quan45.png" />
+    <Content Include="Content\images\quan45_1.png" />
+    <Content Include="Content\images\quan45_2.png" />
+    <Content Include="Content\images\quan45_3.png" />
+    <Content Include="Content\images\quan45_4.png" />
+    <Content Include="Content\images\quan45_5.png" />
+    <Content Include="Content\images\quan46.png" />
+    <Content Include="Content\images\quan46_1.png" />
+    <Content Include="Content\images\quan46_2.png" />
+    <Content Include="Content\images\quan46_3.png" />
+    <Content Include="Content\images\quan46_4.png" />
+    <Content Include="Content\images\quan46_5.png" />
+    <Content Include="Content\images\quan47.png" />
+    <Content Include="Content\images\quan47_1.png" />
+    <Content Include="Content\images\quan47_2.png" />
+    <Content Include="Content\images\quan47_3.png" />
+    <Content Include="Content\images\quan47_4.png" />
+    <Content Include="Content\images\quan47_5.png" />
+    <Content Include="Content\images\quan48.png" />
+    <Content Include="Content\images\quan48_1.png" />
+    <Content Include="Content\images\quan48_2.png" />
+    <Content Include="Content\images\quan48_3.png" />
+    <Content Include="Content\images\quan48_4.png" />
+    <Content Include="Content\images\quan48_5.png" />
+    <Content Include="Content\images\quan49.png" />
+    <Content Include="Content\images\quan49_1.png" />
+    <Content Include="Content\images\quan49_2.png" />
+    <Content Include="Content\images\quan49_3.png" />
+    <Content Include="Content\images\quan49_4.png" />
+    <Content Include="Content\images\quan49_5.png" />
+    <Content Include="Content\images\quan4_1.png" />
+    <Content Include="Content\images\quan4_2.png" />
+    <Content Include="Content\images\quan4_3.png" />
+    <Content Include="Content\images\quan4_4.png" />
+    <Content Include="Content\images\quan4_5.png" />
+    <Content Include="Content\images\quan5.png" />
+    <Content Include="Content\images\quan50.png" />
+    <Content Include="Content\images\quan50_1.png" />
+    <Content Include="Content\images\quan50_2.png" />
+    <Content Include="Content\images\quan50_3.png" />
+    <Content Include="Content\images\quan50_4.png" />
+    <Content Include="Content\images\quan50_5.png" />
+    <Content Include="Content\images\quan51.png" />
+    <Content Include="Content\images\quan51_1.png" />
+    <Content Include="Content\images\quan51_2.png" />
+    <Content Include="Content\images\quan51_3.png" />
+    <Content Include="Content\images\quan51_4.png" />
+    <Content Include="Content\images\quan51_5.png" />
+    <Content Include="Content\images\quan52.png" />
+    <Content Include="Content\images\quan52_1.png" />
+    <Content Include="Content\images\quan52_2.png" />
+    <Content Include="Content\images\quan52_3.png" />
+    <Content Include="Content\images\quan52_4.png" />
+    <Content Include="Content\images\quan52_5.png" />
+    <Content Include="Content\images\quan53.png" />
+    <Content Include="Content\images\quan53_1.png" />
+    <Content Include="Content\images\quan53_2.png" />
+    <Content Include="Content\images\quan53_3.png" />
+    <Content Include="Content\images\quan53_4.png" />
+    <Content Include="Content\images\quan53_5.png" />
+    <Content Include="Content\images\quan54.png" />
+    <Content Include="Content\images\quan54_1.png" />
+    <Content Include="Content\images\quan54_2.png" />
+    <Content Include="Content\images\quan54_3.png" />
+    <Content Include="Content\images\quan54_4.png" />
+    <Content Include="Content\images\quan54_5.png" />
+    <Content Include="Content\images\quan55.png" />
+    <Content Include="Content\images\quan55_1.png" />
+    <Content Include="Content\images\quan55_2.png" />
+    <Content Include="Content\images\quan55_3.png" />
+    <Content Include="Content\images\quan55_4.png" />
+    <Content Include="Content\images\quan56.png" />
+    <Content Include="Content\images\quan56_1.png" />
+    <Content Include="Content\images\quan56_2.png" />
+    <Content Include="Content\images\quan56_3.png" />
+    <Content Include="Content\images\quan56_4.png" />
+    <Content Include="Content\images\quan56_5.png" />
+    <Content Include="Content\images\quan57.png" />
+    <Content Include="Content\images\quan57_1.png" />
+    <Content Include="Content\images\quan57_2.png" />
+    <Content Include="Content\images\quan57_3.png" />
+    <Content Include="Content\images\quan57_4.png" />
+    <Content Include="Content\images\quan57_5.png" />
+    <Content Include="Content\images\quan58.png" />
+    <Content Include="Content\images\quan58_1.png" />
+    <Content Include="Content\images\quan58_2.png" />
+    <Content Include="Content\images\quan58_3.png" />
+    <Content Include="Content\images\quan58_4.png" />
+    <Content Include="Content\images\quan58_5.png" />
+    <Content Include="Content\images\quan59.png" />
+    <Content Include="Content\images\quan59_1.png" />
+    <Content Include="Content\images\quan59_2.png" />
+    <Content Include="Content\images\quan59_3.png" />
+    <Content Include="Content\images\quan59_4.png" />
+    <Content Include="Content\images\quan59_5.png" />
+    <Content Include="Content\images\quan5_1.png" />
+    <Content Include="Content\images\quan5_2.png" />
+    <Content Include="Content\images\quan5_3.png" />
+    <Content Include="Content\images\quan5_4.png" />
+    <Content Include="Content\images\quan5_5.png" />
+    <Content Include="Content\images\quan6.png" />
+    <Content Include="Content\images\quan60.png" />
+    <Content Include="Content\images\quan60_1.png" />
+    <Content Include="Content\images\quan60_2.png" />
+    <Content Include="Content\images\quan60_3.png" />
+    <Content Include="Content\images\quan60_4.png" />
+    <Content Include="Content\images\quan60_5.png" />
+    <Content Include="Content\images\quan61.png" />
+    <Content Include="Content\images\quan61_1.png" />
+    <Content Include="Content\images\quan6_1.png" />
+    <Content Include="Content\images\quan6_2.png" />
+    <Content Include="Content\images\quan6_3.png" />
+    <Content Include="Content\images\quan6_4.png" />
+    <Content Include="Content\images\quan6_5.png" />
+    <Content Include="Content\images\quan7.png" />
+    <Content Include="Content\images\quan7_1.png" />
+    <Content Include="Content\images\quan7_2.png" />
+    <Content Include="Content\images\quan7_3.png" />
+    <Content Include="Content\images\quan7_4.png" />
+    <Content Include="Content\images\quan7_5.png" />
+    <Content Include="Content\images\quan8.png" />
+    <Content Include="Content\images\quan8_1.png" />
+    <Content Include="Content\images\quan8_2.png" />
+    <Content Include="Content\images\quan8_3.png" />
+    <Content Include="Content\images\quan8_4.png" />
+    <Content Include="Content\images\quan8_5.png" />
+    <Content Include="Content\images\quan9.png" />
+    <Content Include="Content\images\quan9_1.png" />
+    <Content Include="Content\images\quan9_2.png" />
+    <Content Include="Content\images\quan9_3.png" />
+    <Content Include="Content\images\quan9_4.png" />
+    <Content Include="Content\images\quan9_5.png" />
+    <Content Include="Content\js\bootstrap.bundle.js" />
+    <Content Include="Content\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\js\bootstrap.esm.js" />
+    <Content Include="Content\js\bootstrap.esm.min.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\picture\1.mp4" />
+    <Content Include="Content\picture\1749640736_0_440x.png" />
+    <Content Include="Content\picture\1754040659_0_440x.png" />
+    <Content Include="Content\picture\1754040714_0_440x.png" />
+    <Content Include="Content\picture\1754041258_0_440x.png" />
+    <Content Include="Content\picture\1754041277_0_440x.png" />
+    <Content Include="Content\picture\1754041291_0_440x.png" />
+    <Content Include="Content\picture\1756729192_0_440x.png" />
+    <Content Include="Content\picture\2.mp4" />
+    <Content Include="Content\picture\3.mp4" />
+    <Content Include="Content\picture\4.mp4" />
+    <Content Include="Content\picture\banner_homepage_0211_pc.png" />
+    <Content Include="Content\picture\battery-one-quarter-filled-svgrepo-com.svg" />
+    <Content Include="Content\picture\book-open-svgrepo-com.svg" />
+    <Content Include="Content\picture\box-minimalistic-svgrepo-com.svg" />
+    <Content Include="Content\picture\company-small-24px-svgrepo-com.svg" />
+    <Content Include="Content\picture\IMG_3778_500x.png" />
+    <Content Include="Content\picture\like-tag-svgrepo-com.svg" />
+    <Content Include="Content\picture\The_worker.png" />
+    <Content Include="Content\picture\thumbnail0000000000.png" />
+    <Content Include="Content\picture\tram1%28image1%29.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="QL_ShopThoiTrang.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QL_ShopThoiTrang.edmx</DependentUpon>
+      <LastGenOutput>QL_ShopThoiTrang.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="QL_ShopThoiTrang.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QL_ShopThoiTrang.edmx</DependentUpon>
+      <LastGenOutput>QL_ShopThoiTrang.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\css\bootstrap-grid.css.map" />
+    <Content Include="Content\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\css\bootstrap-utilities.css.map" />
+    <Content Include="Content\css\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
+    <Content Include="Content\css\bootstrap.rtl.css.map" />
+    <Content Include="Content\css\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\js\bootstrap.esm.js.map" />
+    <Content Include="Content\js\bootstrap.esm.min.js.map" />
+    <Content Include="Content\js\bootstrap.js.map" />
+    <Content Include="Content\js\bootstrap.min.js.map" />
+    <Content Include="Content\picture\logo_YaMe_2025.png" />
+    <EntityDeploy Include="QL_ShopThoiTrang.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QL_ShopThoiTrang.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="QL_ShopThoiTrang.edmx.diagram">
+      <DependentUpon>QL_ShopThoiTrang.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_TransProduct1.cshtml" />
+    <Content Include="Views\Shared\_TransProduct2.cshtml" />
+    <Content Include="Views\Shared\_GuDonGian.cshtml" />
+    <Content Include="Views\Shared\_GuTheThao.cshtml" />
+    <Content Include="Views\Shared\_GuThietKe.cshtml" />
+    <Content Include="Views\Shared\_MenuHeader.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Shared\_DangKy.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\RegisterNhanVien.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\User\LichSuDonHang.cshtml" />
+    <Content Include="Views\User\XemChiTietDonHang.cshtml" />
+    <Content Include="Views\ManageOrder\Index.cshtml" />
+    <Content Include="Views\ManageOrder\Details.cshtml" />
+    <Content Include="Views\ManageProduct\Create.cshtml" />
+    <Content Include="Views\ManageProduct\Index.cshtml" />
+    <Content Include="Views\ManageProduct\Edit.cshtml" />
+    <Content Include="Views\ThongKe\Index.cshtml" />
+    <Content Include="Views\ThongKe\TopSanPham.cshtml" />
+    <Content Include="Views\TestApi\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\ApiDanhMuc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52902</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44391/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

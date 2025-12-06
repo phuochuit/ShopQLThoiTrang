@@ -1,0 +1,408 @@
+﻿@model ShopThoiTrang_DoAn_.SanPham
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2c2c2c;
+            --accent-color: #d4a574;
+            --light-bg: #f8f8f8;
+            --text-dark: #333;
+            --text-muted: #666;
+            --border-color: #e0e0e0;
+        }
+
+        .size-btn {
+            width: 35px;
+            height: 35px;
+            font-weight: 500;
+            border: 1px solid #000;
+            background-color: white;
+            color: black;
+            transition: 0.2s;
+        }
+
+            .size-btn.active {
+                background-color: black;
+                color: white;
+            }
+
+        .thumbnail-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            width: 600px;
+        }
+
+        .thumbnails {
+            display: flex;
+            overflow: hidden;
+            scroll-behavior: smooth;
+            width: 550px;
+        }
+
+            .thumbnails img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                cursor: pointer;
+                flex-shrink: 0;
+                margin-right: 10px;
+                border-radius: 6px;
+                border: 1px solid #ddd;
+                transition: transform 0.2s;
+            }
+
+                .thumbnails img:hover {
+                    transform: scale(1.05);
+                }
+
+        .arrow-btn {
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #444;
+        }
+
+            .arrow-btn:disabled {
+                opacity: 0.3;
+                cursor: not-allowed;
+            }
+
+        .product-gallery {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            border: 1px solid #aaa;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+            .qty-btn:hover {
+                background-color: #f2f2f2;
+            }
+
+        #quantity {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        details {
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+
+        summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            list-style: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #222;
+        }
+
+            summary::-webkit-details-marker {
+                display: none;
+            }
+
+        .icon-caret {
+            transition: transform 0.3s ease;
+        }
+
+        details[open] .icon-caret {
+            transform: rotate(180deg);
+        }
+
+        .accordion__content {
+            margin-top: 10px;
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .svg-wrapper svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            fill: #222;
+        }
+
+        .summary__title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .col-md-6 {
+            position: sticky;
+            top: 20px;
+            align-self: start;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 18px;
+            justify-content: center;
+        }
+
+            .rating i {
+                color: #FFD700;
+            }
+
+            .rating span {
+                color: #555;
+                font-size: 18px;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row justify-content-center gx-5">
+            <!-- Ảnh sản phẩm -->
+            <div class="col-md-6">
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <img id="mainImage" src="@Url.Content("~/Content/images/" + Model.AnhDaiDien)" alt="Ảnh Sản phẩm Chính"
+                             style="width: 356px; height: 498px; border: 1px solid #ccc;">
+                    </div>
+                </div>
+                <div class="thumbnail-container">
+                    <button id="leftArrow" class="arrow-btn" disabled>&lt;</button>
+                    <div class="thumbnails" id="thumbnailStrip">
+                        @foreach (var item in Model.HinhAnhs)
+                        {
+                            <img class="img-thumbnail" src="@Url.Content("~/Content/images/" + item.TenHinh)" style="cursor:pointer;">
+                        }
+                    </div>
+                    <button id="rightArrow" class="arrow-btn">&gt;</button>
+                </div>
+                <h3 class="mt-4">Sản phẩm liên quan</h3>
+
+            </div>
+            <!-- Thông tin sản phẩm -->
+            <div class="col-md-4" style="margin-left: 60px;">
+                <h3>@Model.TenSP</h3>
+                <div>
+                    <h4>@Model.Gia.Value.ToString("N0") VNĐ</h4>
+                </div>
+                <div class="mb-4">
+                    <h5 id="selectedSize">Size: S</h5>
+                    <div class="d-flex gap-2 mt-3" id="sizeButtons">
+                        @foreach (var bt in Model.BienTheSanPhams.Select(x => x.Size).Distinct())
+                        {
+                            <button type="button" class="size-btn @(bt == "S" ? "active" : "")">@bt</button>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <a id="addToCartBtn" href="@Url.Action("AddToCart", "Cart", new { id = Model.MaSP, size = "S", mau = "default" })" class="btn btn-dark">Thêm vào giỏ hàng</a>
+                </div>
+
+                <hr>
+                <div class="details">
+                    <details>
+                        <summary>
+                            <div class="summary__title">
+                                <span class="svg-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                              d="M10 5.24 8.515 3.773a4.433 4.433 0 0 0-6.21 0 4.293 4.293 0 0 0 0 6.128L10 17.495l7.695-7.593a4.293 4.293 0 0 0 0-6.128 4.433 4.433 0 0 0-6.21 0zm.765-2.177c2.113-2.084 5.538-2.084 7.65 0a5.29 5.29 0 0 1 0 7.55l-7.695 7.593a1.03 1.03 0 0 1-1.44 0l-7.696-7.594a5.29 5.29 0 0 1 0-7.549C3.697.98 7.122.98 9.234 3.063l.766.755z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                <h5 class="h5 accordion__title">Ưu điểm của phom dáng</h5>
+                            </div>
+                            <svg class="icon-caret" viewBox="0 0 10 6" width="14">
+                                <path fill="currentColor" fill-rule="evenodd"
+                                      d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708"
+                                      clip-rule="evenodd"></path>
+                            </svg>
+                        </summary>
+                        <div class="accordion__content">
+                            <p>@Model.MoTa1</p>
+                        </div>
+                    </details>
+                </div>
+                <hr>
+                <div class="details">
+                    <details>
+                        <summary>
+                            <div class="summary__title">
+                                <span class="svg-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-accordion icon-eye"
+                                         viewBox="0 0 20 20">
+                                        <path d="M9.524 4.8c-2.761.13-5.44 1.82-8.352 4.865a.484.484 0 0 0 0 .67c2.911 3.044 5.59 4.736 8.352 4.865 2.75.13 5.743-1.286 9.298-4.86a.48.48 0 0 0 0-.68c-3.555-3.574-6.549-4.99-9.298-4.86m-.049-1.04c3.177-.15 6.44 1.503 10.081 5.164a1.526 1.526 0 0 1 0 2.152c-3.641 3.66-6.904 5.314-10.08 5.165-3.167-.149-6.085-2.08-9.053-5.185a1.53 1.53 0 0 1 0-2.112C3.391 5.84 6.31 3.907 9.475 3.76">
+                                        </path>
+                                        <path d="M13.58 10a3.564 3.564 0 0 1-3.568 3.559A3.564 3.564 0 0 1 6.443 10a3.564 3.564 0 0 1 3.569-3.558A3.564 3.564 0 0 1 13.581 10m-3.568 2.517A2.524 2.524 0 0 0 12.542 10a2.524 2.524 0 0 0-2.53-2.517A2.524 2.524 0 0 0 7.482 10a2.524 2.524 0 0 0 2.53 2.517">
+                                        </path>
+                                    </svg>
+                                </span>
+                                <h5 class="h5 accordion__title">Thông tin sản phẩm</h5>
+                            </div>
+                            <svg class="icon-caret" viewBox="0 0 10 6" width="14">
+                                <path fill="currentColor" fill-rule="evenodd"
+                                      d="M9.354.646a.5.5 0 0 0-.708 0L5 4.293 1.354.646a.5.5 0 0 0-.708.708l4 4a.5.5 0 0 0 .708 0l4-4a.5.5 0 0 0 0-.708"
+                                      clip-rule="evenodd"></path>
+                            </svg>
+                        </summary>
+                        <div class="accordion__content">
+                            <p>@Html.Raw(Model.MoTa2.Replace("\r\n", "<br>"))</p>
+                        </div>
+                    </details>
+                </div>
+                <hr>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span>5.00 trên 5</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-4">
+        <div class="row row-cols-2 row-cols-md-4 g-4">
+            @foreach (var item in ViewBag.SPLienQuan)
+            {
+                <div class="col">
+                    <a href="@Url.Action("Details", "Home", new { id = item.MaSP })" style="text-decoration:none; color: black;">
+                        <div class="product-card position-relative rounded overflow-hidden">
+                            <img src="@Url.Content("~/Content/images/" + item.AnhDaiDien)" class="img-fluid w-100" alt="@item.TenSP">
+                            <div class="badge bg-light text-dark position-absolute bottom-0 start-0 mb-3  ms-3 px-3 py-1 shadow-sm">
+                                Miễn Phí Ship
+                            </div>
+                        </div>
+
+                        <p class="mt-2 mb-1">@item.TenSP</p>
+                        <p>
+                            <strong>@item.Gia.ToString("N0") VND</strong>
+                        </p>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+const thumbnails = document.getElementById('thumbnailStrip');
+const leftArrow = document.getElementById('leftArrow');
+const rightArrow = document.getElementById('rightArrow');
+
+const imageWidth = 110;
+const visibleCount = 5;
+const totalImages = thumbnails.children.length;
+let currentIndex = 0;
+
+document.querySelectorAll('.thumbnails img').forEach(img => {
+    img.addEventListener('click', () => {
+        document.getElementById('mainImage').src = img.src;
+    });
+});
+
+function updateButtons() {
+    leftArrow.disabled = currentIndex === 0;
+    rightArrow.disabled = currentIndex >= totalImages - visibleCount;
+}
+
+rightArrow.addEventListener('click', () => {
+    if (currentIndex < totalImages - visibleCount) {
+        currentIndex++;
+        thumbnails.scrollTo({ left: currentIndex * imageWidth, behavior: 'smooth' });
+        updateButtons();
+    }
+});
+
+leftArrow.addEventListener('click', () => {
+    if (currentIndex > 0) {
+        currentIndex--;
+        thumbnails.scrollTo({ left: currentIndex * imageWidth, behavior: 'smooth' });
+        updateButtons();
+    }
+});
+
+    document.addEventListener('DOMContentLoaded', () => {
+        let selectedSize = 'S';
+        let selectedMau = 'default';
+
+        const sizeButtons = document.querySelectorAll('.size-btn');
+        const sizeDisplay = document.getElementById('selectedSize');
+        const addBtn = document.getElementById('addToCartBtn');
+        const baseAddToCartUrl = '@Url.Action("AddToCart", "Cart")';
+
+        sizeButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                sizeButtons.forEach(b => b.classList.remove('active'));
+
+                this.classList.add('active');
+
+                selectedSize = this.textContent.trim();
+
+                sizeDisplay.textContent = 'Size: ' + selectedSize;
+
+                addBtn.href = `${baseAddToCartUrl}?id=@Model.MaSP&size=${selectedSize}&mau=${selectedMau}`;
+
+                console.log('Size đã chọn:', selectedSize); 
+            });
+        });
+    });
+    </script>
+
+</body>
+
+</html>

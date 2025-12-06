@@ -1,0 +1,72 @@
+﻿@model ShopThoiTrang_DoAn_.KhachHang
+@{
+    ViewBag.Title = "Đăng ký";
+}
+
+<div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 py-5">
+    <div style="width: 100%; max-width: 550px;">
+        <div class="form-section">
+            <div class="card">
+                <div class="card-body p-5">
+                    <h4 class="card-title text-center mb-1">Đăng Ký Tài Khoản Khách Hàng</h4>
+                    <p class="text-center text-muted mb-4">Tạo tài khoản để mua sắm dễ dàng hơn</p>
+
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                    }
+
+                    @using (Html.BeginForm("Register", "User", FormMethod.Post))
+                    {
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.TenKH, "Tên Khách Hàng", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.TenKH, new { @class = "form-control", placeholder = "Nhập tên đầy đủ" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.Email, "Email", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "your@email.com", type = "email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.DienThoai, "Số Điện Thoại", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.DienThoai, new { @class = "form-control", placeholder = "0912345678" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.MatKhau, "Mật Khẩu", new { @class = "form-label" })
+                            @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                            @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.GioiTinh, "Giới Tính", new { @class = "form-label" })
+                            @Html.DropDownListFor(m => m.GioiTinh,
+                                new SelectList(new[] { "Nam", "Nữ", "Khác" }),
+                                "-- Chọn --",
+                                new { @class = "form-select" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.NamSinh, "Năm Sinh", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.NamSinh, new { @class = "form-control", type = "number", min = "1950", max = "2010", placeholder = "1990" })
+                        </div>
+
+                        <div class="mb-3">
+                            @Html.LabelFor(m => m.DiaChi, "Địa Chỉ", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.DiaChi, new { @class = "form-control", placeholder = "Nhập địa chỉ đầy đủ" })
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
+                    }
+
+                    <div class="mt-3 text-center">
+                        <span class="text-muted">Đã có tài khoản? </span>
+                        <a href="@Url.Action("Login", "User")" class="text-decoration-none fw-bold">Đăng nhập ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

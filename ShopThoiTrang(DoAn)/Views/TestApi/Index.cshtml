@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Test API Danh Mục";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Test API Danh Mục</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h4>Danh sách danh mục</h4>
+        <button class="btn btn-primary" onclick="loadData()">Tải dữ liệu (GET)</button>
+        <ul id="listDM" class="list-group mt-3"></ul>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm">
+            <h4 class="text-success">Thêm mới (POST)</h4>
+
+            <div class="form-group mb-2">
+                <label>Tên danh mục:</label>
+                <input type="text" id="txtTenDM" class="form-control" placeholder="VD: Áo Khoác" />
+            </div>
+
+            <div class="form-group mb-2">
+                <label>ID Danh mục cha (Để trống nếu là gốc):</label>
+                <input type="number" id="txtMaDMChinh" class="form-control" placeholder="VD: 1" />
+            </div>
+
+            <button class="btn btn-success w-100 mt-2" onclick="themmoi()">+ Thêm Danh Mục</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    var apiUrl = '/api/ApiDanhMuc'; 
+    function loadData() {
+        $.ajax({
+            url: apiUrl,
+            type: 'GET',
+            success: function (res) {
+                var html = '';
+                $.each(res, function (index, item) {
+                    html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><b>${item.MaDM}</b> - ${item.TenDM}</span>
+                            <div>
+                                <button class="btn btn-warning btn-sm mr-2" onclick="sua(${item.MaDM}, '${item.TenDM}')">Sửa</button>
+                                <button class="btn btn-danger btn-sm" onclick="xoa(${item.MaDM})">Xóa</button>
+                            </div>
+                         </li>`;
+                });
+                $('#listDM').html(html);
+            },
+            error: function (err) { alert('Lỗi tải: ' + err.statusText); }
+        });
+    }
+
+    function themmoi() {
+        var ten = $('#txtTenDM').val();
+        var data = { TenDM: ten, MaDMChinh: null };
+
+        $.ajax({
+            url: apiUrl,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data), 
+            success: function (res) {
+                alert('Thêm thành công! ID: ' + res.id);
+                loadData(); 
+            },
+            error: function (err) {
+                alert('Lỗi thêm: ' + err.responseText);
+            }
+        });
+    }
+
+    function xoa(id) {
+        if (!confirm('Bạn có chắc muốn xóa ID ' + id + '?')) return;
+
+        $.ajax({
+            url: apiUrl + '/' + id,
+            type: 'DELETE',
+            success: function (res) {
+                alert('Xóa thành công!');
+                loadData();
+            },
+            error: function (err) {
+                var msg = err.responseJSON ? err.responseJSON.message : err.statusText;
+                alert('Lỗi xóa: ' + msg);
+            }
+        });
+    }
+
+    function sua(id, tenCu, maDMChinhCu) {
+        var tenMoi = prompt("Bước 1/2: Nhập tên mới:", tenCu);
+        if (tenMoi === null) return;
+
+        var valHienTai = maDMChinhCu === 'null' ? '' : maDMChinhCu;
+        var maChaMoi = prompt("Bước 2/2: Nhập ID Danh Mục Cha (để trống nếu không có cha):", valHienTai);
+
+        if (maChaMoi === null) return; 
+
+        var finalMaCha = (maChaMoi.trim() === "" || maChaMoi === "null") ? null : parseInt(maChaMoi);
+
+        var data = {
+            MaDM: id,
+            TenDM: tenMoi,
+            MaDMChinh: finalMaCha
+        };
+
+        $.ajax({
+            url: apiUrl + '/' + id,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function (res) {
+                alert('Cập nhật thành công!');
+                loadData();
+            },
+            error: function (err) {
+                alert('Lỗi sửa: ' + err.responseText);
+            }
+        });
+    }
+</script>

@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|d:\\code\\web\\ltweb\\doanltw\\shopthoitrang(doan)\\shopthoitrang(doan)\\views\\testapi\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\testapi\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|d:\\code\\web\\ltweb\\doanltw\\shopthoitrang(doan)\\shopthoitrang(doan)\\controllers\\testapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\testapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|d:\\code\\web\\ltweb\\doanltw\\shopthoitrang(doan)\\shopthoitrang(doan)\\controllers\\apidanhmuccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\apidanhmuccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|d:\\code\\web\\ltweb\\doanltw\\shopthoitrang(doan)\\shopthoitrang(doan)\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|d:\\code\\web\\ltweb\\doanltw\\shopthoitrang(doan)\\shopthoitrang(doan)\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|d:\\code\\web\\ltweb\\doanltw\\shopthoitrang(doan)\\shopthoitrang(doan)\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\TestApi\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\TestApi\\Index.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\TestApi\\Index.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\TestApi\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAmwB4AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T12:32:48.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TestApiController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\TestApiController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\TestApiController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\TestApiController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\TestApiController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T12:32:38.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApiDanhMucController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\ApiDanhMucController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\ApiDanhMucController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\ApiDanhMucController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\ApiDanhMucController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAIwAUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T12:25:43.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WebApiConfig.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\App_Start\\WebApiConfig.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\App_Start\\WebApiConfig.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\App_Start\\WebApiConfig.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\App_Start\\WebApiConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T12:25:11.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Global.asax.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Global.asax.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Global.asax.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Global.asax.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAD4vxAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T12:22:15.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\UserController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAIwJkAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T12:02:14.208Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

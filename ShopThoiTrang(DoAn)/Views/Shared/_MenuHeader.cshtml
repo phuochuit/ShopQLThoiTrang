@@ -1,0 +1,38 @@
+﻿@model MegaMenuViewModel
+
+<nav class="nav">
+    @foreach (var dm1 in Model.Cap1)
+    {
+        <div class="nav-item has-dropdown">
+            <div class="icon-att">@dm1.TenDM</div>
+
+            <div class="mega-menu">
+                <div class="mega-menu-content">
+                    <div class="mega-menu-right">
+                        @{
+                            var dm2List = Model.Cap2.Where(d => d.MaDMChinh == dm1.MaDM).ToList();
+                        }
+                        @foreach (var dm2 in dm2List)
+                        {
+                            var dm3List = Model.Cap3.Where(d => d.MaDMChinh == dm2.MaDM).ToList();
+                            <div class="mega-menu-column">
+                                <h3>@dm2.TenDM</h3>
+                                <hr>
+                                <div class="mega-menu-items">
+                                    @foreach (var dm3 in dm3List)
+                                    {
+                                       <div class="mega-menu-item">
+                                           <a href="@Url.Action("SanPhamTheoDanhMuc", "Home", new { id = dm3.MaDM })" style="text-decoration:none; color:inherit;">
+                                               @dm3.TenDM
+                                           </a>
+                                       </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</nav>

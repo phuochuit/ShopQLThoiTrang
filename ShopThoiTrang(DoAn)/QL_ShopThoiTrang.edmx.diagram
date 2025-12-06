@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="699cf7ebaaec407d8f5753298aaf88d2" Name="Diagram1">
+        <EntityTypeShape EntityType="NHOM8_DOANModel.BienTheSanPham" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.ChiTietHoaDon" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.DanhMuc" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.HinhAnh" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.HoaDon" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.KhachHang" Width="1.5" PointX="1.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.NhanVien" Width="1.5" PointX="3.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.SanPham" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.TinhTrang" Width="1.5" PointX="1.5" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="NHOM8_DOANModel.VaiTro" Width="1.5" PointX="1.5" PointY="18.625" IsExpanded="true" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__BienTheSan__MaSP__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__ChiTietHoa__MaHD__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__ChiTietHoa__MaSP__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__DanhMuc__MaDMChi__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__SanPham__MaDM__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__HinhAnh__MaSP__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__HoaDon__MaKH__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__HoaDon__TinhTran__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK_KhachHang_VaiTro" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK__NhanVien__VaiTro__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="NHOM8_DOANModel.FK_HoaDon_NhanVien" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
