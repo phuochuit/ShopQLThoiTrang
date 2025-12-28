@@ -142,7 +142,7 @@ namespace ShopThoiTrang_DoAn_.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(SanPham sp, HttpPostedFileBase uploadHinh)
+        public ActionResult Edit(SanPham sp, HttpPostedFileBase uploadHinh, IEnumerable<HttpPostedFileBase> files)
         {
             if (!KiemTraQuyen()) return RedirectToAction("Login", "User");
 
@@ -164,12 +164,64 @@ namespace ShopThoiTrang_DoAn_.Controllers
                     spGoc.AnhDaiDien = filename;
                 }
 
+                if (files != null && files.Count() > 0)
+                {
+                    foreach (var file in files)
+                    {
+                        if (file != null && file.ContentLength > 0)
+                        {
+                            string fname = Path.GetFileName(file.FileName);
+                            string fpath = Path.Combine(Server.MapPath("~/Content/images"), fname);
+
+                            if (System.IO.File.Exists(fpath))
+                            {
+                                fname = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + fname;
+                                fpath = Path.Combine(Server.MapPath("~/Content/images"), fname);
+                            }
+
+                            file.SaveAs(fpath);
+
+                            HinhAnh newPic = new HinhAnh();
+                            newPic.MaSP = sp.MaSP;
+                            newPic.TenHinh = fname;
+                            db.HinhAnhs.Add(newPic);
+                        }
+                    }
+                }
+
                 db.SaveChanges();
                 TempData["Success"] = "Cập nhật sản phẩm thành công!";
                 return RedirectToAction("Index");
             }
             ViewBag.MaDM = new SelectList(db.DanhMucs, "MaDM", "TenDM", sp.MaDM);
             return View(sp);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteImage(int id)
+        {
+            // Kiểm tra quyền (giữ nguyên logic của bạn)
+            if (!KiemTraQuyen()) return RedirectToAction("Login", "User");
+
+            var hinh = db.HinhAnhs.Find(id);
+            if (hinh != null)
+            {
+                // 1. QUAN TRỌNG: Lưu lại MaSP vào biến tạm TRƯỚC khi xóa.
+                // .GetValueOrDefault() giúp chuyển đổi int? sang int (tránh lỗi null)
+                int productId = hinh.MaSP.GetValueOrDefault();
+
+                // 2. Thực hiện xóa
+                db.HinhAnhs.Remove(hinh);
+                db.SaveChanges();
+
+                TempData["Success"] = "Đã xóa ảnh phụ!";
+
+                // 3. Redirect về trang Edit với productId đã lưu
+                return RedirectToAction("Edit", new { id = productId });
+            }
+
+            TempData["Error"] = "Không tìm thấy ảnh!";
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)

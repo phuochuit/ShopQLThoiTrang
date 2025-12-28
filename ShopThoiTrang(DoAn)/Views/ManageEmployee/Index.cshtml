@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ShopThoiTrang_DoAn_.NhanVien>
+
+@{
+    ViewBag.Title = "Quản lý nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Hoặc Layout bạn đang dùng
+}
+
+<h2>Danh sách nhân viên</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới nhân viên", "RegisterNhanVien", "User", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (TempData["Success"] != null)
+{
+<div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+<div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Tên nhân viên</th>
+        <th>Email</th>
+        <th>Vai trò</th>
+        <th>Chỉnh sửa</th>
+    </tr>
+
+    @foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.TenNV)</td>
+        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+        <td>
+            @if(item.VaiTro == 1) { <span class="badge bg-danger">Admin</span> }
+            else { <span class="badge bg-info">Nhân viên</span> }
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MaNV }, new { @class = "btn btn-warning btn-sm" }) |
+            <a href="@Url.Action("Delete", new { id = item.MaNV })" onclick="return confirm('Bạn có chắc muốn xóa nhân viên này?');" class="btn btn-danger btn-sm">Xóa</a>
+        </td>
+    </tr>
+}
+</table>

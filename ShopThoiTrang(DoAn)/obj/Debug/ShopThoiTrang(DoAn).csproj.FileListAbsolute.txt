@@ -100,3 +100,5 @@ D:\Code\Web\LTWeb\DoAnLTW\ShopThoiTrang(DoAn)\ShopThoiTrang(DoAn)\bin\System.Run
 D:\Code\Web\LTWeb\DoAnLTW\ShopThoiTrang(DoAn)\ShopThoiTrang(DoAn)\bin\System.Threading.Tasks.Extensions.xml
 D:\Code\Web\LTWeb\DoAnLTW\ShopThoiTrang(DoAn)\ShopThoiTrang(DoAn)\bin\System.Web.Http.xml
 D:\Code\Web\LTWeb\DoAnLTW\ShopThoiTrang(DoAn)\ShopThoiTrang(DoAn)\bin\System.Web.Http.WebHost.xml
+D:\Code\Web\LTWeb\DoAnLTW\ShopThoiTrang(DoAn)\ShopThoiTrang(DoAn)\obj\Debug\ShopThoiTrang_DoAn_.Properties.Resources.resources
+D:\Code\Web\LTWeb\DoAnLTW\ShopThoiTrang(DoAn)\ShopThoiTrang(DoAn)\obj\Debug\ShopThoiTrang(DoAn).csproj.GenerateResource.cache

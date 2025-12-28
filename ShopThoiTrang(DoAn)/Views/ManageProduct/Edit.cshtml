@@ -11,17 +11,18 @@
     @using (Html.BeginForm("Edit", "ManageProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.MaSP)  @Html.HiddenFor(model => model.AnhDaiDien)
+    @Html.HiddenFor(model => model.MaSP)
+    @Html.HiddenFor(model => model.AnhDaiDien)
 
     <div class="card shadow p-4">
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+            @* --- CÁC TRƯỜNG CŨ (Tên, Giá, Danh mục...) GIỮ NGUYÊN --- *@
             <div class="form-group row mb-3">
                 <label class="col-md-2 col-form-label font-weight-bold">Tên sản phẩm</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -30,26 +31,58 @@
                 <div class="col-md-4">
                     @Html.DropDownList("MaDM", null, new { @class = "form-control" })
                 </div>
-
                 <label class="col-md-2 col-form-label font-weight-bold text-end">Giá bán</label>
                 <div class="col-md-4">
                     @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control", type = "number" } })
                 </div>
             </div>
 
+            @* --- PHẦN ẢNH ĐẠI DIỆN --- *@
             <div class="form-group row mb-3">
-                <label class="col-md-2 col-form-label font-weight-bold">Ảnh hiện tại</label>
+                <label class="col-md-2 col-form-label font-weight-bold">Ảnh đại diện</label>
                 <div class="col-md-4">
-                    <img src="~/Content/images/@Model.AnhDaiDien" width="100" class="img-thumbnail" />
-                </div>
-
-                <label class="col-md-2 col-form-label font-weight-bold">Chọn ảnh mới</label>
-                <div class="col-md-4">
+                    <img src="~/Content/images/@Model.AnhDaiDien" width="100" class="img-thumbnail mb-2" />
                     <input type="file" name="uploadHinh" class="form-control" accept="image/*" />
-                    <small class="text-muted">Bỏ trống nếu không muốn đổi ảnh.</small>
+                    <small class="text-muted">Chọn ảnh mới để thay thế ảnh đại diện.</small>
                 </div>
             </div>
 
+            <hr />
+
+            @* --- PHẦN MỚI: QUẢN LÝ ALBUM ẢNH PHỤ --- *@
+            <div class="form-group row mb-3">
+                <label class="col-md-2 col-form-label font-weight-bold">Album ảnh phụ</label>
+                <div class="col-md-10">
+
+                    @if (Model.HinhAnhs != null && Model.HinhAnhs.Any())
+                    {
+                    <div class="row mb-3">
+                        @foreach (var img in Model.HinhAnhs)
+                            {
+                        <div class="col-md-2 text-center mb-2 position-relative">
+                            <img src="~/Content/images/@img.TenHinh" class="img-thumbnail" style="width: 100%; height: 100px; object-fit: cover;" />
+
+                            <a href="javascript:void(0);" onclick="confimDelete(@img.ID)" class="btn btn-danger btn-sm mt-1 w-100">
+                                <i class="fa fa-trash"></i> Xóa
+                            </a>
+                        </div>
+                            }
+                    </div>
+                    }
+                    else
+                    {
+                    <p class="text-muted">Chưa có ảnh phụ nào.</p>
+                    }
+
+                    <label class="font-weight-bold mt-2">Thêm ảnh vào album:</label>
+                    <input type="file" name="files" multiple class="form-control" accept="image/*" />
+                    <small class="text-muted">Nhấn giữ Ctrl để chọn nhiều ảnh cùng lúc.</small>
+                </div>
+            </div>
+
+            <hr />
+
+            @* --- CÁC TRƯỜNG MÔ TẢ GIỮ NGUYÊN --- *@
             <div class="form-group row mb-3">
                 <label class="col-md-2 col-form-label font-weight-bold">Mô tả ngắn</label>
                 <div class="col-md-10">
@@ -76,3 +109,18 @@
     </div>
     }
 </div>
+
+@* Form ẩn để xử lý xóa ảnh (tránh dùng GET request để xóa dữ liệu) *@
+<form id="deleteImageForm" action="@Url.Action("DeleteImage")" method="post" style="display:none;">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" id="deleteImageId" />
+</form>
+
+<script>
+    function confimDelete(id) {
+        if (confirm('Bạn có chắc chắn muốn xóa ảnh này không?')) {
+            document.getElementById('deleteImageId').value = id;
+            document.getElementById('deleteImageForm').submit();
+        }
+    }
+</script>

@@ -1,0 +1,14 @@
+﻿@{ ViewBag.Title = "Xác thực OTP"; Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h2>Nhập mã OTP</h2>
+<p>Mã đã được gửi tới email: <b>@Session["ResetEmail"]</b></p>
+@if (ViewBag.Error != null) { <div class="alert alert-danger">@ViewBag.Error</div> }
+
+<form action="@Url.Action("VerifyOtp", "User")" method="post">
+    <div class="form-group">
+        <label>Nhập mã 6 số:</label>
+        <input type="text" name="otpInput" class="form-control" required />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">Xác nhận</button>
+</form>

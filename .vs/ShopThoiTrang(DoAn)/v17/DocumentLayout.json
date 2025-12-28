@@ -1,12 +1,341 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|d:\\code\\web\\ltweb\\doanltw\\shopthoitrang(doan)\\shopthoitrang(doan)\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\user\\registernhanvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\user\\registernhanvien.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\cart\\paymentwithqr.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\cart\\paymentwithqr.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\home\\product.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\home\\product.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\shared\\_menuheader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\shared\\_menuheader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\megamenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\megamenuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\controllers\\manageordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\manageordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\controllers\\manageemployeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\manageemployeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\manageemployee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\manageemployee\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\shared\\_transproduct1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\shared\\_transproduct1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\controllers\\manageproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\controllers\\manageproductcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\manageproduct\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\manageproduct\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\home\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\home\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\manageemployee\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\manageemployee\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\manageproduct\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\manageproduct\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\shopthoitrang(doan)\\views\\cart\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{156ED66F-C327-401F-9FBF-381EFBF8CA79}|ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn).csproj|solutionrelative:shopthoitrang(doan)\\views\\cart\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Product.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Home\\Product.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\Home\\Product.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Home\\Product.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\Home\\Product.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T01:56:48.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_MenuHeader.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Shared\\_MenuHeader.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\Shared\\_MenuHeader.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Shared\\_MenuHeader.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\Shared\\_MenuHeader.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T01:55:48.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAAAA0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T05:40:08.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaymentWithQR.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Cart\\PaymentWithQR.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\Cart\\PaymentWithQR.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Cart\\PaymentWithQR.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\Cart\\PaymentWithQR.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAADwv08AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-13T13:05:49.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\CartController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\CartController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAAABAAAAAAAAAAArwAkBAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T12:52:54.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterNhanVien.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\User\\RegisterNhanVien.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\User\\RegisterNhanVien.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\User\\RegisterNhanVien.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\User\\RegisterNhanVien.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T02:52:09.079Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ManageEmployeeController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\ManageEmployeeController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\ManageEmployeeController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\ManageEmployeeController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\ManageEmployeeController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-20T02:04:13.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\UserController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T06:28:45.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ManageOrderController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\ManageOrderController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\ManageOrderController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\ManageOrderController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\ManageOrderController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-20T02:04:03.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MegaMenuViewModel.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\MegaMenuViewModel.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\MegaMenuViewModel.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\MegaMenuViewModel.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\MegaMenuViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-20T02:16:33.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\ManageEmployee\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\ManageEmployee\\Index.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\ManageEmployee\\Index.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\ManageEmployee\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T01:22:08.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "_TransProduct1.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Shared\\_TransProduct1.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\Shared\\_TransProduct1.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Shared\\_TransProduct1.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\Shared\\_TransProduct1.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T01:48:50.826Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Home\\Details.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\Home\\Details.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Home\\Details.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\Home\\Details.cshtml",
+              "ViewState": "AgIAAPsAAAAAAAAAAAAQwHcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T01:07:46.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAFIBAAAAAAAAAAAAAF0BAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T01:57:32.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\ManageProduct\\Create.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\ManageProduct\\Create.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\ManageProduct\\Create.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\ManageProduct\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T00:56:29.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\ManageProduct\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\ManageProduct\\Edit.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\ManageProduct\\Edit.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\ManageProduct\\Edit.cshtml",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAcwHAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T00:55:44.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ManageProductController.cs",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\ManageProductController.cs",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Controllers\\ManageProductController.cs",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Controllers\\ManageProductController.cs",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Controllers\\ManageProductController.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAAANEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-20T00:54:58.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAC0CAAAAAAAAAAAAAGICAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-13T13:18:00.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\ManageEmployee\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\ManageEmployee\\Edit.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\ManageEmployee\\Edit.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\ManageEmployee\\Edit.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T01:22:49.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Cart\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "ShopThoiTrang(DoAn)\\Views\\Cart\\Checkout.cshtml",
+              "ToolTip": "D:\\Code\\Web\\LTWeb\\DoAnLTW\\ShopThoiTrang(DoAn)\\ShopThoiTrang(DoAn)\\Views\\Cart\\Checkout.cshtml",
+              "RelativeToolTip": "ShopThoiTrang(DoAn)\\Views\\Cart\\Checkout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-13T13:00:39.893Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

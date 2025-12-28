@@ -3,6 +3,8 @@
     ViewBag.Title = "Đăng ký nhân viên";
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 py-5">
     <div style="width: 100%; max-width: 550px;">
         <div class="form-section">
@@ -13,42 +15,52 @@
 
                     @if (TempData["SuccessMessage"] != null)
                     {
-                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
                     }
 
                     @using (Html.BeginForm("RegisterNhanVien", "User", FormMethod.Post))
                     {
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.TenNV, "Tên Nhân Viên", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.TenNV, new { @class = "form-control", placeholder = "Nhập tên nhân viên" })
-                        </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.TenNV, "Tên Nhân Viên", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.TenNV, new { @class = "form-control", placeholder = "Nhập tên nhân viên" })
+                    </div>
 
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.Email, "Email", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "your@email.com" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.Email, "Email", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "your@email.com", @id = "txtEmail", required = "required"})
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
 
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.MatKhau, "Mật Khẩu", new { @class = "form-label" })
-                            @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
-                            @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                    <div class="mb-3">
+                        <label class="form-label">Mã Xác Thực (OTP)</label>
+                        <div class="input-group">
+                            <input type="text" name="otpVerify" class="form-control" placeholder="Nhập mã 6 số" required />
+                            <button type="button" id="btnSendOtp" class="btn btn-warning">Gửi mã</button>
                         </div>
+                        <small id="msgOtp" class="fw-bold mt-1 d-block"></small>
+                        @Html.ValidationMessage("OTP", new { @class = "text-danger" })
+                    </div>
 
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.GioiTinh, "Giới Tính", htmlAttributes: new { @class = "form-label" })
-                            @Html.DropDownListFor(m => m.GioiTinh,
-                                new SelectList(new[] { "Nam", "Nữ", "Khác" }),
-                                "-- Chọn giới tính --",
-                                new { @class = "form-select" })
-                        </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.MatKhau, "Mật Khẩu", new { @class = "form-label" })
+                        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                        @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                    </div>
 
-                        <div class="mb-3">
-                            @Html.LabelFor(m => m.NamSinh, "Năm Sinh", htmlAttributes: new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.NamSinh, new { @class = "form-control", type = "number", min = "1950", max = "2010", placeholder = "1990" })
-                        </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.GioiTinh, "Giới Tính", htmlAttributes: new { @class = "form-label" })
+                        @Html.DropDownListFor(m => m.GioiTinh,
+                            new SelectList(new[] { "Nam", "Nữ", "Khác" }),
+                            "-- Chọn giới tính --",
+                            new { @class = "form-select" })
+                    </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.NamSinh, "Năm Sinh", htmlAttributes: new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.NamSinh, new { @class = "form-control", type = "number", min = "1950", max = "2010", placeholder = "1990" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
                     }
                 </div>
             </div>
@@ -57,8 +69,45 @@
 </div>
 
 <script>
-    function togglePasswordNV() {
-        const input = document.querySelector('input[type="password"]');
-        input.type = input.type === 'password' ? 'text' : 'password';
-    }
+    $(document).ready(function () {
+        $('#btnSendOtp').click(function () {
+            // Lấy giá trị từ ô input có id="txtEmail"
+            var email = $('#txtEmail').val();
+
+            // Kiểm tra validate email đơn giản bằng JS
+            if (email == "") {
+                alert("Vui lòng nhập Email trước khi lấy mã!");
+                $('#txtEmail').focus();
+                return;
+            }
+
+            // Hiệu ứng đang gửi
+            var btn = $(this);
+            var originalText = btn.text();
+            btn.prop('disabled', true).text('Đang gửi...');
+            $('#msgOtp').text('');
+
+            $.ajax({
+                url: '@Url.Action("SendOtpAjax", "User")',
+                type: 'POST',
+                data: { email: email },
+                success: function (res) {
+                    if (res.success) {
+                        $('#msgOtp').css('color', 'green').text(res.message);
+                        // Giữ nút disabled một lúc để tránh spam
+                        setTimeout(function() {
+                             btn.prop('disabled', false).text('Gửi lại');
+                        }, 60000); // 60 giây sau mới cho gửi lại
+                    } else {
+                        $('#msgOtp').css('color', 'red').text(res.message);
+                        btn.prop('disabled', false).text(originalText);
+                    }
+                },
+                error: function () {
+                    alert("Có lỗi xảy ra khi gọi server!");
+                    btn.prop('disabled', false).text(originalText);
+                }
+            });
+        });
+    });
 </script>

@@ -34,7 +34,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -164,17 +164,17 @@
     <Compile Include="ChiTietHoaDon.cs">
       <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ApiDanhMucController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageEmployeeController.cs" />
     <Compile Include="Controllers\ManageOrderController.cs" />
     <Compile Include="Controllers\ManageProductController.cs" />
-    <Compile Include="Controllers\TestApiController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DanhMuc.cs">
       <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmailHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +194,11 @@
       <DependentUpon>QL_ShopThoiTrang.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="QL_ShopThoiTrang.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1095,11 +1100,16 @@
     <Content Include="Views\ManageProduct\Edit.cshtml" />
     <Content Include="Views\ThongKe\Index.cshtml" />
     <Content Include="Views\ThongKe\TopSanPham.cshtml" />
-    <Content Include="Views\TestApi\Index.cshtml" />
+    <Content Include="Views\User\ForgotPassword.cshtml" />
+    <Content Include="Views\User\VerifyOtp.cshtml" />
+    <Content Include="Views\User\ResetPassword.cshtml" />
+    <Content Include="Views\Cart\PaymentWithQR.cshtml" />
+    <Content Include="Views\ManageEmployee\Index.cshtml" />
+    <Content Include="Views\ManageEmployee\Create.cshtml" />
+    <Content Include="Views\ManageEmployee\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ApiDanhMuc\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -1130,6 +1140,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

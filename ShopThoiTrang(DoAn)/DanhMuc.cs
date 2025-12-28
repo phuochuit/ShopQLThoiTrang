@@ -11,7 +11,8 @@ namespace ShopThoiTrang_DoAn_
 {
     using System;
     using System.Collections.Generic;
-    
+    using Newtonsoft.Json;
+
     public partial class DanhMuc
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,9 +27,12 @@ namespace ShopThoiTrang_DoAn_
         public Nullable<int> MaDMChinh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<DanhMuc> DanhMuc1 { get; set; }
+        [JsonIgnore]
         public virtual DanhMuc DanhMuc2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShopThoiTrang_DoAn_.Models;
+using System.IO; // Thêm thư viện này để đọc dữ liệu
+using Newtonsoft.Json; // Thêm thư viện này để xử lý JSON
+using System.Text.RegularExpressions;
 
 namespace ShopThoiTrang_DoAn_.Controllers
 {
@@ -146,6 +149,57 @@ namespace ShopThoiTrang_DoAn_.Controllers
         }
 
         [HttpPost]
+        public ActionResult Checkout(string dummy = null) 
+        {
+            try
+            {
+                string jsonBody;
+                Request.InputStream.Position = 0;
+                using (var reader = new StreamReader(Request.InputStream))
+                {
+                    jsonBody = reader.ReadToEnd();
+                }
+                var data = JsonConvert.DeserializeObject<SePayWebhookData>(jsonBody);
+
+                if (data == null)
+                {
+                    return new HttpStatusCodeResult(400, "Invalid Data");
+                }
+
+                string noiDungCK = data.content;
+                var match = Regex.Match(noiDungCK, @"\d+");
+
+                if (match.Success)
+                {
+                    int maHD = int.Parse(match.Value);
+
+                    // 4. Tìm đơn hàng trong Database
+                    var order = db.HoaDons.FirstOrDefault(h => h.MaHD == maHD);
+
+                    if (order != null)
+                    {
+                        // Kiểm tra số tiền chuyển có khớp với tổng tiền đơn hàng không
+                        // Lưu ý: data.transferAmount là số tiền khách chuyển
+                        if (data.transferAmount >= order.TongTien)
+                        {
+                            // 5. Cập nhật trạng thái đơn hàng
+                            // Giả sử: 1 = Mới tạo, 2 = Đã thanh toán
+                            order.TinhTrang = 2;
+                            db.SaveChanges();
+                        }
+                    }
+                }
+
+                // 6. QUAN TRỌNG: Luôn trả về 200 OK cho SePay
+                return new HttpStatusCodeResult(200, "Success");
+            }
+            catch (Exception ex)
+            {
+                return new HttpStatusCodeResult(500, ex.Message);
+            }
+        }
+
+        [HttpPost]
         public ActionResult Payment(string shipName, string mobile, string address, string email)
         {
             Cart cart = (Cart)Session["Cart"];
@@ -165,7 +219,7 @@ namespace ShopThoiTrang_DoAn_.Controllers
 
             order.SDT = mobile; 
 
-            order.DiaChiGiaoHang = address + " (Người nhận: " + shipName + ")";
+            order.DiaChiGiaoHang = address ;
 
             if (user is KhachHang)
             {
@@ -176,7 +230,6 @@ namespace ShopThoiTrang_DoAn_.Controllers
             {
                 order.MaKH = null;
             }
-
 
             using (var transaction = db.Database.BeginTransaction())
             {
@@ -206,7 +259,7 @@ namespace ShopThoiTrang_DoAn_.Controllers
 
                     TempData["SuccessMessage"] = "ĐẶT HÀNG THÀNH CÔNG! Cảm ơn bạn đã ủng hộ shop.";
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("PaymentWithQR", new { id = order.MaHD });
                 }
                 catch (Exception ex)
                 {
@@ -218,6 +271,52 @@ namespace ShopThoiTrang_DoAn_.Controllers
                     return RedirectToAction("Checkout");
                 }
             }
+        }
+
+        [HttpGet]
+        public ActionResult PaymentWithQR(int id)
+        {
+            var order = db.HoaDons.FirstOrDefault(n => n.MaHD == id);
+            if (order == null) return RedirectToAction("Index", "Home");
+
+            // Nếu đơn hàng đã thanh toán rồi (ví dụ reload trang) thì báo thành công luôn
+            if (order.TinhTrang == 2)
+            {
+                TempData["SuccessMessage"] = "Đơn hàng đã được thanh toán!";
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(order);
+        }
+
+        // ---------------------------------------------------------
+        // 3. THÊM API ĐỂ JAVASCRIPT GỌI KIỂM TRA TRẠNG THÁI (POLLING)
+        // ---------------------------------------------------------
+        [HttpPost]
+        public JsonResult CheckOrderStatus(int orderId)
+        {
+            var order = db.HoaDons.FirstOrDefault(n => n.MaHD == orderId);
+
+            // Kiểm tra nếu TinhTrang == 2 (Đã thanh toán qua Webhook)
+            if (order != null && order.TinhTrang == 2)
+            {
+                return Json(new { status = true, message = "Thanh toán thành công!" });
+            }
+
+            return Json(new { status = false });
+        }
+
+        public class SePayWebhookData
+        {
+            public long id { get; set; }            // ID giao dịch trên SePay
+            public string gateway { get; set; }     // Cổng thanh toán (MB, VCB...)
+            public string transactionDate { get; set; }
+            public string accountNumber { get; set; }
+            public string code { get; set; }        // Mã code thanh toán (nếu có)
+            public string content { get; set; }     // Nội dung chuyển khoản (QUAN TRỌNG: Chứa mã đơn hàng)
+            public string transferType { get; set; }
+            public decimal transferAmount { get; set; } // Số tiền khách chuyển
+            public string referenceCode { get; set; }
         }
     }
 }

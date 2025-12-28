@@ -3,7 +3,9 @@
 <div class="row justify-content-center g-4">
     @foreach (var item in Model)
     {
-        <div class="col-6 col-md-3">
+
+    <div class="col-6 col-md-3">
+        <a href="@Url.Action("Details", "Home", new { id = item.MaSP })" style="text-decoration:none;">
             <div class="card border-0 product-card">
                 <div class="overflow-hidden">
                     <img src="@Url.Content("~/Content/images/" + item.AnhDaiDien)" class="card-img-top" alt="@item.TenSP">
@@ -14,6 +16,7 @@
                     <p class="fw-semibold mb-0">@item.Gia.Value.ToString("N0") VND</p>
                 </div>
             </div>
-        </div>
+        </a>
+    </div>
     }
 </div>

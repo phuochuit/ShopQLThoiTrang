@@ -3,6 +3,8 @@
     ViewBag.Title = "Đăng ký";
 }
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100 py-5">
     <div style="width: 100%; max-width: 550px;">
         <div class="form-section">
@@ -25,8 +27,18 @@
 
                         <div class="mb-3">
                             @Html.LabelFor(m => m.Email, "Email", new { @class = "form-label" })
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "your@email.com", type = "email" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "your@email.com", type = "email", @id = "txtEmail", required = "required"})
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Mã Xác Thực (OTP)</label>
+                            <div class="input-group">
+                                <input type="text" name="otpVerify" class="form-control" placeholder="Nhập mã 6 số" required />
+                                <button type="button" id="btnSendOtp" class="btn btn-warning">Gửi mã</button>
+                            </div>
+                            <small id="msgOtp" class="fw-bold mt-1 d-block"></small>
+                            @Html.ValidationMessage("OTP", new { @class = "text-danger" })
                         </div>
 
                         <div class="mb-3">
@@ -70,3 +82,38 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        $('#btnSendOtp').click(function () {
+            var email = $('#txtEmail').val();
+
+            if (email == "") {
+                alert("Vui lòng nhập Email trước khi lấy mã!");
+                return;
+            }
+
+            $('#btnSendOtp').prop('disabled', true).text('Đang gửi...');
+            $('#msgOtp').text('');
+
+            $.ajax({
+                url: '@Url.Action("SendOtpAjax", "User")',
+                type: 'POST',
+                data: { email: email },
+                success: function (res) {
+                    if (res.success) {
+                        $('#msgOtp').css('color', 'green').text(res.message);
+                    } else {
+                        $('#msgOtp').css('color', 'red').text(res.message);
+                        $('#btnSendOtp').prop('disabled', false).text('Gửi mã xác thực');
+                    }
+                },
+                error: function () {
+                    alert("Có lỗi xảy ra khi gọi server!");
+                    $('#btnSendOtp').prop('disabled', false).text('Gửi mã xác thực');
+                }
+            });
+        });
+    });
+</script>

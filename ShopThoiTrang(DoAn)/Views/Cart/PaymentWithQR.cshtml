@@ -1,0 +1,98 @@
+﻿@model ShopThoiTrang_DoAn_.HoaDon
+@{
+    ViewBag.Title = "Thanh toán QR SePay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //Cấu hình thông tin tài khoản nhận tiền
+    string nganHang = "TpBank"; // Ví dụ: MBBank, VCB, ACB...
+    string soTaiKhoan = "06975895555"; // Điền số tài khoản của bạn
+    string chuTaiKhoan = "TRUONG TO DINH PHUOC"; // Tên chủ tài khoản
+
+    // Tạo nội dung chuyển khoản: DH + Mã Hóa Đơn (để khớp với Regex trong Webhook)
+    string noiDungCK = "DH " + Model.MaHD;
+
+    // Tạo Link QR SePay
+    string qrLink = $"https://qr.sepay.vn/img?acc={soTaiKhoan}&bank={nganHang}&amount={Model.TongTien}&des={noiDungCK}";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white text-center">
+                    <h3>THANH TOÁN ĐƠN HÀNG #@Model.MaHD</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-primary">Thông tin chuyển khoản</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Ngân hàng:</strong> @nganHang</li>
+                                <li class="list-group-item"><strong>Số tài khoản:</strong> <span class="text-danger font-weight-bold" style="font-size: 1.2em">@soTaiKhoan</span></li>
+                                <li class="list-group-item"><strong>Chủ tài khoản:</strong> @chuTaiKhoan</li>
+                                <li class="list-group-item"><strong>Số tiền:</strong> <span class="text-success font-weight-bold">@Model.TongTien.Value.ToString("N0") đ</span></li>
+                                <li class="list-group-item"><strong>Nội dung CK:</strong> <span class="badge badge-warning" style="font-size: 1em">@noiDungCK</span></li>
+                            </ul>
+                            <div class="alert alert-info mt-3">
+                                <small>Hệ thống sẽ tự động xác nhận sau khi bạn chuyển khoản thành công. Vui lòng không tắt trình duyệt.</small>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 text-center">
+                            <p>Quét mã QR để thanh toán nhanh</p>
+                            <img src="@qrLink" alt="Mã QR thanh toán" class="img-fluid border p-2" style="max-width: 300px;" />
+
+                            <div id="status-area" class="mt-3">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <p class="text-muted mt-2">Đang chờ thanh toán...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // ID đơn hàng lấy từ Model
+            var orderId = @Model.MaHD;
+
+            // Hàm kiểm tra trạng thái đơn hàng
+            function checkOrderStatus() {
+                $.ajax({
+                    url: '/Cart/CheckOrderStatus',
+                    type: 'POST',
+                    data: { orderId: orderId },
+                    success: function (response) {
+                        if (response.status === true) {
+                            // Nếu đã thanh toán thành công
+                            $('#status-area').html(
+                                '<div class="alert alert-success">✅ ' + response.message + '</div>' +
+                                '<p>Đang chuyển hướng...</p>'
+                            );
+
+                            // Dừng kiểm tra
+                            clearInterval(intervalId);
+
+                            // Chuyển hướng về trang chủ sau 2 giây
+                            setTimeout(function () {
+                                window.location.href = "@Url.Action("LichSuDonHang", "User")";
+                            }, 2000);
+                        }
+                    },
+                    error: function () {
+                        console.log("Lỗi kiểm tra trạng thái.");
+                    }
+                });
+            }
+
+            // Thiết lập chạy hàm checkOrderStatus mỗi 2 giây (2000ms)
+            var intervalId = setInterval(checkOrderStatus, 2000);
+        });
+    </script>
+}
